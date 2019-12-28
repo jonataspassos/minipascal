@@ -1,0 +1,43 @@
+<assignment> ::= <variable> := <expression>
+<conditional> ::= if <expression> then <command> ( else <command> | <vazio> )
+<iterative> ::= while <expression> do <command>
+<multiCommand> ::= begin (<command> ; )* end
+
+<command> ::= 	<assignment> | <conditional> | <iterative> |<multiCommand>
+
+<declaration> ::= var <id> ( , <id>)* : <type> ;
+
+<expression> ::= <simpleExpression> ( <opRel> <simpleExpression> | vazio )
+
+<simpleExpression> ::= <term> (<opAd> <term>)*
+
+<term> ::= <factor>( <opMul> <factor> )* 
+
+<factor> ::= <variable> | <boolLit> | <intLit> | <floatLit>  | "(" <expression> ")" 
+
+<program> ::= program <id> ; 
+				( <declaration> )*
+				<multiCommand> .
+<primitiveType> ::= integer | real | boolean
+<type> ::= <primitiveType>
+			| array [ <intLit> ~ <intLit> ] of <type>	#Explicar a mudança do .. para o ~#
+
+<variable> ::= <id> ( "[" <expression> "]" )*
+
+<opAd> ::= +| - | or
+
+<opMul> ::= * | / | and
+
+<opRel> ::= < | > | <= | >= | = | <>
+
+<boolLit> ::= true | false
+
+# Tratados no Léxico #
+
+<floatLit> ::= $Float$
+
+<id> ::= $Identifier$
+
+<intLit> ::= $Numeric$
+
+<comment	> ::= # qualquer coisa # 

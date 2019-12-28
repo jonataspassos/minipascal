@@ -1,0 +1,19 @@
+reserve-words 10 a # tipo alfanumérico # { 
+	and array begin boolean
+	do else end false if
+	integer of or program
+	real then true var while
+} + # tipo extensível #
+valid-symbols 40 s {
+	-	(	)	*	,
+	.	/	:	:=	;
+	[	]	~	+	<
+	<=	<>	=	>	>=
+} - # tipo não extensível #
+numeric 80 n {
+} + # tipo extensível #
+combined m { # Regras de tokens combinadas #
+	<s:46> <n:80> $ 90
+	<n:80> <s:46> $ 90
+	<n:80> <s:46> <n:80> $ 90
+}
