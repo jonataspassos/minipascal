@@ -3,9 +3,8 @@ package scanner;
 import java.util.ArrayList;
 
 import utils.Buffer;
-import utils.FileBuffer;
 import utils.MyString;
-import utils.StringBuffer;
+
 
 public class PatternToken {
 

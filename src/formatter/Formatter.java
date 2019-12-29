@@ -27,8 +27,9 @@ public abstract class Formatter implements Visitor {
 		((Program)program).getMc().visit(p);
 		
 		p.fileOut("array.html");
+		Runtime.getRuntime().exec("array.html");
 		
-		String formated = (new PascalFormater()).format(program);
+		(new PascalFormater()).format(program);
 	}
 
 	protected void identation() {

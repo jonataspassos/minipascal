@@ -1,5 +1,8 @@
 package ast;
 
+import utils.MyString;
+import utils.StringBuffer;
+
 public class FloatLit extends Lit {
 
 	private float value;
@@ -20,8 +23,25 @@ public class FloatLit extends Lit {
 
 	@Override
 	public void setValue(String value) {
-		// TODO Auto-generated method stub
+		StringBuffer b= new StringBuffer(value);
+		String temp = "0";
+		int inteira = 0;
+		int decimal = 0;
+		int casas = 0;
+		while(b.getTypeChar() == 'n') {
+			temp +=b.consumeChar();
+		}
+		inteira = MyString.toInt(temp);
+		b.consumeChar();
+		temp = "0";
+		while(b.getTypeChar() == 'n') {
+			temp +=b.consumeChar();
+			casas ++;
+		}
+		decimal = MyString.toInt(temp);
 
+		setValue((float)(inteira + decimal/Math.pow(10.0, casas)));
+		System.out.println((float)(inteira + decimal/Math.pow(10.0, casas)));
 	}
 
 	// Padrão Visitor

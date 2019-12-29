@@ -35,5 +35,7 @@ public class AggregateType extends Type {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitAggregateType(this);
-	};
+	}
+	
+	
 }

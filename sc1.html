@@ -2,7 +2,7 @@
 <head >
 <title >
 
-.:: Visualization ::.
+.::MiniPascal Printer::.
 </title>
 <style>
 text {
@@ -38,7 +38,7 @@ text {
 	stroke:black;
 	stroke-width:0.2px;
 }.expression>rect {
-	opacity:0.7;
+	fill:antiquewhite;
 }.op>rect {
 	opacity:0.8;
 }.id>rect {
@@ -47,6 +47,8 @@ text {
 	fill:darkseagreen;
 }.command>rect {
 	fill:goldenrod;
+}.program>rect {
+	fill:rebeccapurple;
 }
 </style>
 
@@ -57,23 +59,163 @@ text {
  style = "border:6; color:#0000ff; ">
 <svg width="640" height="480" >
 <g id="dynamic" >
-<g class="assignment command" >
-<rect style="fill:white;opacity:0.5;" y="-9" width="90" height="208" >
+<g class="in" >
+<g transform="translate(320,0)scale(1.5,1.5)" >
+<g class="program" >
+<g transform="translate(-50,59)" >
+<g class="list-declaration" transform="translate(-51,0)" >
+<g transform="translate(10,0)" >
+<g transform="translate(0,19)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-19" y2="0" >
+
+
+</line>
+<g class="declaration" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="92" height="96" >
 
 
 </rect>
-<g transform="translate(5,9)" >
+<g transform="translate(14,19)" >
+<g class="list-id" transform="translate(-14,0)" >
+<line x1="0" x2="28" y1="0" y2="0" >
+
+
+</line>
+<g class="id" transform="translate(17.0,50)" >
+<line x1="0" x2="0" y2="0" y1="-50" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+z
+</text>
+
+
+</g>
+<g class="id" transform="translate(14.0,30)" >
+<line x1="0" x2="0" y2="0" y1="-30" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+y
+</text>
+
+
+</g>
+<g class="id" transform="translate(11.0,10)" >
+<line x1="0" x2="0" y2="0" y1="-10" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(65,19)" >
+<g class="integer" >
+<rect x="-27" width="54" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+integer
+</text>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="92" height="18" >
+
+
+</rect>
+<text x="46" dy=".3em" >
+
+var ... : ...
+</text>
+<line x1="46" x2="14" y1="9" y2="19" >
+
+
+</line>
+<line x1="71" x2="65" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="102" y1="0" y2="0" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(11,68)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-9" y2="0" >
+
+
+</line>
+<g class="multi command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="90" height="208" >
+
+
+</rect>
+<g transform="translate(10,9)" >
 <g transform="translate(6,139)" >
 <line x1="-5" x2="0" y1="0" y2="0" >
 
 
 </line>
-<line x1="-5" x2="-5" y1="-130" y2="0" >
+<line x1="-5" x2="-5" y1="-139" y2="0" >
 
 
 </line>
 <g class="assignment command" >
-<rect style="fill:white;opacity:0.5;" y="-9" width="60" height="50" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
 
 
 </rect>
@@ -101,7 +243,7 @@ z
 
 
 </g>
-<g transform="translate(38,30)" >
+<g transform="translate(37,30)" >
 <line x1="-5" x2="0" y1="0" y2="0" >
 
 
@@ -110,34 +252,294 @@ z
 
 
 </line>
-<g class="expression none" >
-<rect style="opacity:1;fill:white;" y="-11" width="22" height="22" >
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
 
 
 </rect>
-<rect y="-11" width="22" height="22" >
+<g class="none" >
+<rect y="-11" width="3" height="22" >
 
 
 </rect>
 
 
 </g>
-
-
-</g>
-<rect y="-9" width="60" height="18" >
+<g transform="translate(14,-8.0)scale(0.13333334,0.13333334)" >
+<g class="expression" >
+<g class="simple-expression none" >
+<g >
+<g class="none" >
+<rect x="-12" width="24" height="18" >
 
 
 </rect>
-<text x="30" dy=".3em" >
+<text y="9" dy=".3em" >
 
-... := ...
++
 </text>
-<line x1="13" x2="11" y1="9" y2="19" >
+
+
+</g>
+
+
+</g>
+<g transform="translate(-64,28)" >
+<g class="term none" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="none" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression none" >
+<g class="term none" >
+<g >
+<g class="none" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-32,28)" >
+<g class="term none" >
+<g >
+<g class="none" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term none" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="none" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+45
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
 
 
 </line>
-<line x1="48" x2="33" y1="9" y2="19" >
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="expression" >
+<g class="simple-expression none" >
+<g >
+<g class="none" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
++
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term none" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+30
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression none" >
+<g class="term none" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+45
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-32" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-64" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
 
 
 </line>
@@ -152,12 +554,12 @@ z
 
 
 </line>
-<line x1="-5" x2="-5" y1="-70" y2="0" >
+<line x1="-5" x2="-5" y1="-79" y2="0" >
 
 
 </line>
 <g class="assignment command" >
-<rect style="fill:white;opacity:0.5;" y="-9" width="60" height="50" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
 
 
 </rect>
@@ -185,7 +587,7 @@ y
 
 
 </g>
-<g transform="translate(38,30)" >
+<g transform="translate(37,30)" >
 <line x1="-5" x2="0" y1="0" y2="0" >
 
 
@@ -194,34 +596,66 @@ y
 
 
 </line>
-<g class="expression none" >
-<rect style="opacity:1;fill:white;" y="-11" width="22" height="22" >
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
 
 
 </rect>
-<rect y="-11" width="22" height="22" >
+<g class="none" >
+<rect y="-11" width="3" height="22" >
 
 
 </rect>
 
 
 </g>
-
-
-</g>
-<rect y="-9" width="60" height="18" >
+<g transform="translate(14,-8.0)scale(0.8888889,0.8888889)" >
+<g class="expression" >
+<g class="simple-expression none" >
+<g class="term none" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
 
 
 </rect>
-<text x="30" dy=".3em" >
+<text y="9" dy=".3em" >
+
+2
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
 
 ... := ...
 </text>
-<line x1="13" x2="11" y1="9" y2="19" >
+<line x1="14" x2="11" y1="9" y2="19" >
 
 
 </line>
-<line x1="48" x2="33" y1="9" y2="19" >
+<line x1="49" x2="32" y1="9" y2="19" >
 
 
 </line>
@@ -236,12 +670,12 @@ y
 
 
 </line>
-<line x1="-5" x2="-5" y1="-10" y2="0" >
+<line x1="-5" x2="-5" y1="-19" y2="0" >
 
 
 </line>
 <g class="assignment command" >
-<rect style="fill:white;opacity:0.5;" y="-9" width="60" height="50" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
 
 
 </rect>
@@ -269,7 +703,7 @@ x
 
 
 </g>
-<g transform="translate(38,30)" >
+<g transform="translate(37,30)" >
 <line x1="-5" x2="0" y1="0" y2="0" >
 
 
@@ -278,34 +712,66 @@ x
 
 
 </line>
-<g class="expression none" >
-<rect style="opacity:1;fill:white;" y="-11" width="22" height="22" >
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
 
 
 </rect>
-<rect y="-11" width="22" height="22" >
+<g class="none" >
+<rect y="-11" width="3" height="22" >
 
 
 </rect>
 
 
 </g>
-
-
-</g>
-<rect y="-9" width="60" height="18" >
+<g transform="translate(14,-8.0)scale(0.8888889,0.8888889)" >
+<g class="expression" >
+<g class="simple-expression none" >
+<g class="term none" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
 
 
 </rect>
-<text x="30" dy=".3em" >
+<text y="9" dy=".3em" >
+
+1
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
 
 ... := ...
 </text>
-<line x1="13" x2="11" y1="9" y2="19" >
+<line x1="14" x2="11" y1="9" y2="19" >
 
 
 </line>
-<line x1="48" x2="33" y1="9" y2="19" >
+<line x1="49" x2="32" y1="9" y2="19" >
 
 
 </line>
@@ -332,7 +798,43 @@ begin ... end
 
 
 </g>
+<rect x="-30" width="60" height="39" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+program
+</text>
+<text y="30" dy=".3em" >
+
+sc1
+</text>
+<line x1="0" x2="-50" y1="39" y2="59" >
+
+
+</line>
+<line x1="0" x2="6" y1="39" y2="59" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
 <g id="static" >
+<g class="in" >
+
+
+</g>
 
 
 </g>
@@ -519,7 +1021,29 @@ var zoom, translateX, translateY, reset, help;
 
                 }
             }
+			 var zoonables = document.querySelectorAll(".expression");
+            zoonables.forEach(function(d,i){
+                d.setAttribute("style","cursor: pointer;");
+                d.addEventListener("click",function(){
+                    reset();
+                    var svg = document.querySelector("svg");
+                    
+                    var w = this.getBoundingClientRect();
+                    var h = w.height*z,
+                        x = (w.x-svg.getBoundingClientRect().x)*z,
+                        y = (w.y-svg.getBoundingClientRect().y)*z;
+                    w = w.width*z;
 
+                    x-=w/2;
+                    w+=w/2;
+                    
+                    z = Math.min(svg.getBoundingClientRect().width/w,svg.getBoundingClientRect().height/h);
+                    tx = -x*z;
+                    ty = -y*z;
+
+                    setTransform();
+                },false);
+            });
         })()
 </script>
 

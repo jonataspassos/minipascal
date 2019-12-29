@@ -26,14 +26,14 @@ public class PascalFormater extends Formatter {
 		this.out += "if ";
 		ast.getExpression().visit(this);
 		this.out += " then\n";
-		identation(true);
+		this.level++;
 		ast.getCommand(true).visit(this);
 		this.out += "\n";
 		this.level--;
 		if (ast.getCommand(false) != null) {
 			identation();
 			this.out += "else\n";
-			identation(true);
+			this.level++;
 			ast.getCommand(false).visit(this);
 			this.out += "\n";
 			this.level--;
@@ -46,7 +46,7 @@ public class PascalFormater extends Formatter {
 		this.out += "while ";
 		ast.getExpression().visit(this);
 		this.out += " then\n";
-		identation(true);
+		this.level++;
 		ast.getCommand().visit(this);
 		this.out += "\n";
 		this.level--;
@@ -54,11 +54,11 @@ public class PascalFormater extends Formatter {
 
 	@Override
 	public void visitMultiCommand(MultiCommand ast) {
-		identation(false);
+		this.level--;
+		identation();
 		this.out+= "begin\n";
 		this.level++;
 		for(Object i : ast.getCommand().toArray()) {
-			identation();
 			((Command)i).visit(this);
 		}
 		identation(false);
@@ -103,12 +103,18 @@ public class PascalFormater extends Formatter {
 
 	@Override
 	public void visitTerm(Term ast) {
+		boolean exp = ast.getA(0) instanceof Expression;
+		this.out += exp?"(":"";
 		ast.getA(0).visit(this);
+		this.out += exp?")":"";
+		
 		for(int i=1;i<ast.getA().size();i++) {
-			this.out += " ";
 			ast.getOp(i-1).visit(this);
-			this.out += " ";
+			
+			exp = ast.getA(i) instanceof Expression;
+			this.out += exp?"(":"";
 			ast.getA(i).visit(this);
+			this.out += exp?")":"";
 		}
 	}
 

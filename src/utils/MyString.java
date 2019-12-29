@@ -79,12 +79,19 @@ public class MyString {
 	
 	public static int toInt(String string) {
 		int ret = 0;
+		int s = 1;
 		StringBuffer b = new StringBuffer(string);
+		
+		if(b.getChar()=='-') {
+			s = -1;
+			b.consumeChar();
+		}
+		
 		while(!b.isEmpty() && b.getTypeChar() == 'n') {
 			ret = ret*10 + b.consumeChar()-'0';
 		}
 		
-		return ret;
+		return ret*s;
 	}
 	
 	public static byte toByte(String string) {

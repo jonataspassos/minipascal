@@ -170,7 +170,7 @@ public class Parser {
 			
 		case PascalToken.tFalse:
 		case PascalToken.tTrue:
-			lit = new IntLit(currentToken.line, currentToken.column);
+			lit = new BoolLit(currentToken.line, currentToken.column);
 			lit.setValue(acceptIt().spelling);// <bool-lit> |
 			return lit;
 

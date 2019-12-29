@@ -1,5 +1,7 @@
 package ast;
 
+import utils.MyString;
+
 public class IntLit extends Lit {
 
 	private int value;
@@ -20,8 +22,7 @@ public class IntLit extends Lit {
 
 	@Override
 	public void setValue(String value) {
-		// TODO Auto-generated method stub
-
+		setValue(MyString.toInt(value));
 	}
 
 	// Padrão Visitor

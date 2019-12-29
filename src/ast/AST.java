@@ -1,5 +1,7 @@
 package ast;
 
+import formatter.PascalFormater;
+
 //Arvore sintática abstrata
 //Abstract Sintatic Tree
 public abstract class AST {
@@ -22,5 +24,10 @@ public abstract class AST {
 
 	// Padrão Visitor
 	public abstract void visit(Visitor v);
+	
+	@Override
+	public String toString() {
+		return new PascalFormater().format(this);
+	};
 
 }

@@ -20,7 +20,7 @@ public class BoolLit extends Lit {
 
 	@Override
 	public void setValue(String value) {
-		// TODO Auto-generated method stub
+		setValue(value.equals("true"));
 
 	}
 
