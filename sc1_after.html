@@ -1,0 +1,2802 @@
+<html >
+<head >
+<title >
+
+.::MiniPascal Printer::.
+</title>
+<style>
+text {
+	text-anchor:middle;
+}line {
+	stroke:black;
+	stroke-width:1px;
+}.array>rect {
+	fill:aqua;
+}.integer>rect {
+	fill:dodgerblue;
+}.integer>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.real>rect {
+	fill:darkgreen;
+}.real>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.boolean>rect {
+	fill:blueviolet;
+}.boolean>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.null>rect {
+	fill:gray;
+}.variable>rect {
+	fill:coral;
+}.expression {
+	stroke:black;
+	stroke-width:0.2px;
+}.expression>rect {
+	fill:antiquewhite;
+}.op>rect {
+	opacity:0.8;
+}.id>rect {
+	fill:lightgray;
+}.declaration>rect {
+	fill:darkseagreen;
+}.command>rect {
+	fill:goldenrod;
+}.program>rect {
+	fill:rebeccapurple;
+}
+</style>
+
+
+</head>
+<body >
+<div class="container" 
+ style = "border:6; color:#0000ff; ">
+<svg width="640" height="480" >
+<g id="dynamic" >
+<g class="in" >
+<g transform="translate(320,0)scale(1.0,1.0)" >
+<g class="program" >
+<g transform="translate(-118,59)" >
+<g class="list-declaration" transform="translate(-51,0)" >
+<g transform="translate(10,0)" >
+<g transform="translate(6,171)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-171" y2="0" >
+
+
+</line>
+<g class="declaration" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="86" height="56" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="list-id" transform="translate(-11,0)" >
+<line x1="0" x2="22" y1="0" y2="0" >
+
+
+</line>
+<g class="id" transform="translate(11.0,10)" >
+<line x1="0" x2="0" y2="0" y1="-10" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+b
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(59,19)" >
+<g class="boolean" >
+<rect x="-27" width="54" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+boolean
+</text>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="86" height="18" >
+
+
+</rect>
+<text x="43" dy=".3em" >
+
+var ... : ...
+</text>
+<line x1="43" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="68" x2="59" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(3,85)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-85" y2="0" >
+
+
+</line>
+<g class="declaration" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="89" height="76" >
+
+
+</rect>
+<g transform="translate(12,19)" >
+<g class="list-id" transform="translate(-12,0)" >
+<line x1="0" x2="25" y1="0" y2="0" >
+
+
+</line>
+<g class="id" transform="translate(14.0,30)" >
+<line x1="0" x2="0" y2="0" y1="-30" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+z
+</text>
+
+
+</g>
+<g class="id" transform="translate(11.0,10)" >
+<line x1="0" x2="0" y2="0" y1="-10" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(62,19)" >
+<g class="real" >
+<rect x="-27" width="54" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+real
+</text>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="89" height="18" >
+
+
+</rect>
+<text x="44" dy=".3em" >
+
+var ... : ...
+</text>
+<line x1="44" x2="12" y1="9" y2="19" >
+
+
+</line>
+<line x1="69" x2="62" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(0,19)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-19" y2="0" >
+
+
+</line>
+<g class="declaration" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="86" height="56" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="list-id" transform="translate(-11,0)" >
+<line x1="0" x2="22" y1="0" y2="0" >
+
+
+</line>
+<g class="id" transform="translate(11.0,10)" >
+<line x1="0" x2="0" y2="0" y1="-10" >
+
+
+</line>
+<rect x="-11.0" width="22.0" height="18" >
+
+
+</rect>
+<text y="9" dy=".25em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(59,19)" >
+<g class="integer" >
+<rect x="-27" width="54" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+integer
+</text>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="86" height="18" >
+
+
+</rect>
+<text x="43" dy=".3em" >
+
+var ... : ...
+</text>
+<line x1="43" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="68" x2="59" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="102" y1="0" y2="0" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-57,68)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-9" y2="0" >
+
+
+</line>
+<g class="multi command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="226" height="454" >
+
+
+</rect>
+<g transform="translate(10,9)" >
+<g transform="translate(9,199)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-199" y2="0" >
+
+
+</line>
+<g class="conditional command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="207" height="236" >
+
+
+</rect>
+<g transform="translate(10,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="boolean" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.3478261,0.3478261)" >
+<g class="expression" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+=
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression integer" >
+<g class="term integer" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(45,28)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-9" y2="0" >
+
+
+</line>
+<g class="multi command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="90" height="208" >
+
+
+</rect>
+<g transform="translate(10,9)" >
+<g transform="translate(6,139)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-139" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="boolean" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+b
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="boolean" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.16949153,0.16949153)" >
+<g class="expression" >
+<g class="simple-expression boolean" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+or
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-32,28)" >
+<g class="term boolean" >
+<g class="expression" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+=
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression integer" >
+<g class="term integer" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="simple-expression boolean" >
+<g class="term boolean" >
+<g class="expression" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+=
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+z
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-32" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(3,79)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-79" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="real" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.21621622,0.21621622)" >
+<g class="expression" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+/
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term real" >
+<g class="expression" >
+<g class="simple-expression real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+-
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term integer" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+2
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(0,19)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-19" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="real" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.04016064,0.04016064)" >
+<g class="expression" >
+<g class="simple-expression real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
++
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-206,28)" >
+<g class="term integer" >
+<g >
+<g class="integer" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term integer" >
+<g >
+<g class="integer" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term integer" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+3
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+4
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+5
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(48,28)" >
+<g class="simple-expression real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
++
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-92,28)" >
+<g class="term real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-38,28)" >
+<g class="term real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-38,28)" >
+<g class="term real" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+0.1
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(38,28)" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+0.2
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-38" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="38" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(76,28)" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+0.3
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-38" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="76" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(114,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-38,28)" >
+<g class="term real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-38,28)" >
+<g class="term real" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+3
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+0.5
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-38" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(54,28)" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+4.0
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-38" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="54" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-92" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="114" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-206" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="48" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="90" height="18" >
+
+
+</rect>
+<text x="45" dy=".3em" >
+
+begin ... end
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(145,28)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-9" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="boolean" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+b
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="boolean" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.16949153,0.16949153)" >
+<g class="expression" >
+<g class="simple-expression boolean" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+or
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-32,28)" >
+<g class="term boolean" >
+<g class="expression" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+=
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+z
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="simple-expression boolean" >
+<g class="term boolean" >
+<g class="expression" >
+<g >
+<g class="boolean" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+=
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="simple-expression integer" >
+<g class="term integer" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-32" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="207" height="18" >
+
+
+</rect>
+<text x="103" dy=".3em" >
+
+if ... then ... else ...
+</text>
+<line x1="63" x2="5" y1="9" y2="19" >
+
+
+</line>
+<line x1="111" x2="40" y1="9" y2="19" >
+
+
+</line>
+<line x1="158" x2="140" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(6,139)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-139" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+z
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="real" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.13333334,0.13333334)" >
+<g class="expression" >
+<g class="simple-expression real" >
+<g >
+<g class="real" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
++
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-64,28)" >
+<g class="term real" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression real" >
+<g class="term integer" >
+<g >
+<g class="integer" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-32,28)" >
+<g class="term integer" >
+<g >
+<g class="integer" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".5em" >
+
+*
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term integer" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+45
+</text>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(32,28)" >
+<g class="expression" >
+<g class="simple-expression integer" >
+<g >
+<g class="integer" >
+<rect x="-12" width="24" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
++
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(-16,28)" >
+<g class="term integer" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+30
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g transform="translate(16,28)" >
+<g class="simple-expression integer" >
+<g class="term integer" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+45
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-16" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-32" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="32" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<line x1="0" x2="-64" y1="18" y2="28" >
+
+
+</line>
+<line x1="0" x2="16" y1="18" y2="28" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(3,79)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-79" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="integer" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+y
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="integer" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.8888889,0.8888889)" >
+<g class="expression" >
+<g class="simple-expression integer" >
+<g class="term integer" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+2
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+<g transform="translate(0,19)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-19" y2="0" >
+
+
+</line>
+<g class="assignment command" >
+<rect style="fill:white;opacity:0.7;" y="-9" width="62" height="50" >
+
+
+</rect>
+<g transform="translate(11,19)" >
+<g class="variable" >
+<rect x="-11" width="22" height="18" >
+
+
+</rect>
+<g class="real" >
+<rect x="9" width="3" height="18" >
+
+
+</rect>
+
+
+</g>
+<text y="9" dy=".3em" >
+
+x
+</text>
+
+
+</g>
+
+
+</g>
+<g transform="translate(37,30)" >
+<line x1="-5" x2="0" y1="0" y2="0" >
+
+
+</line>
+<line x1="-5" x2="-5" y1="-11" y2="0" >
+
+
+</line>
+<g class="expression" >
+<rect y="-11" width="25" height="22" >
+
+
+</rect>
+<g class="real" >
+<rect y="-11" width="3" height="22" >
+
+
+</rect>
+
+
+</g>
+<g transform="translate(14,-8.0)scale(0.3030303,0.3030303)" >
+<g class="expression" >
+<g class="simple-expression real" >
+<g class="term real" >
+<g class="real" >
+<rect x="-33" width="66" height="18" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+1.0
+</text>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="62" height="18" >
+
+
+</rect>
+<text x="31" dy=".3em" >
+
+... := ...
+</text>
+<line x1="14" x2="11" y1="9" y2="19" >
+
+
+</line>
+<line x1="49" x2="32" y1="9" y2="19" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<rect y="-9" width="226" height="18" >
+
+
+</rect>
+<text x="113" dy=".3em" >
+
+begin ... end
+</text>
+
+
+</g>
+
+
+</g>
+<rect x="-30" width="60" height="39" >
+
+
+</rect>
+<text y="9" dy=".3em" >
+
+program
+</text>
+<text y="30" dy=".3em" >
+
+sc1
+</text>
+<line x1="0" x2="-118" y1="39" y2="59" >
+
+
+</line>
+<line x1="0" x2="-62" y1="39" y2="59" >
+
+
+</line>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+
+
+</g>
+<g id="static" >
+<g class="in" >
+
+
+</g>
+
+
+</g>
+
+
+</svg>
+
+
+</div>
+<div id="panel-control" class="panel-control" >
+<button onclick="zoom(true)" >
+
+zoom in
+</button>
+<button onclick="zoom(false)" >
+
+zoom out
+</button>
+<button onclick="translateX(true)" >
+
+X +
+</button>
+<button onclick="translateX(false)" >
+
+X -
+</button>
+<button onclick="translateY(true)" >
+
+Y +
+</button>
+<button onclick="translateY(false)" >
+
+Y -
+</button>
+<button onclick="reset()" >
+
+reset
+</button>
+<button onclick="help()" >
+
+help
+</button>
+
+
+</div>
+<script >
+
+var zoom, translateX, translateY, reset, help;
+
+        (function () {
+
+            var KEY_DOWN = 40, KEY_UP = 38, KEY_LEFT = 37, KEY_RIGHT = 39;
+            var KEY_END = 35, KEY_BEGIN = 36;
+            var KEY_BACK_TAB = 8, KEY_TAB = 9, KEY_SH_TAB = 16, KEY_ENTER = 13, KEY_ESC = 27, KEY_SPACE = 32, KEY_DEL = 46;
+            var KEY_A = 65, KEY_B = 66, KEY_C = 67, KEY_D = 68, KEY_E = 69, KEY_F = 70, KEY_G = 71, KEY_H = 72, KEY_I = 73,
+                KEY_J = 74, KEY_K = 75, KEY_L = 76, KEY_M = 77, KEY_N = 78, KEY_O = 79, KEY_P = 80, KEY_Q = 81, KEY_R = 82,
+                KEY_S = 83, KEY_T = 84, KEY_U = 85, KEY_V = 86, KEY_W = 87, KEY_X = 88, KEY_Y = 89, KEY_Z = 90;
+            var KEY_PF1 = 112, KEY_PF2 = 113, KEY_PF3 = 114, KEY_PF4 = 115, KEY_PF5 = 116, KEY_PF6 = 117, KEY_PF7 = 118, KEY_PF8 = 119;
+
+            var REMAP_KEY_T = 5019;
+
+            var factor = 0.1;
+            var z = 1.0;
+            var tx = 0;
+            var ty = 0;
+            function setTransform() {
+                document.querySelector("#dynamic").setAttribute("transform", "translate(" + tx + "," + ty + ")scale(" + z + "," + z + ")");
+            }
+
+            function w() {
+                return document.querySelector("svg").getBoundingClientRect().width;
+            }
+
+            function h() {
+                return document.querySelector("svg").getBoundingClientRect().height;
+            }
+
+            function checkEventObj(_event_) {
+                // --- IE explorer
+                if (window.event)
+                    return window.event;
+                // --- Netscape and other explorers
+                else
+                    return _event_;
+            }
+
+            zoom = function (s) {
+                if (s == false) {
+                    z /= 1 + factor;
+                    tx /= 1 + factor;
+                    ty /= 1 + factor;
+                } else {
+                    z *= 1 + factor;
+                    tx *= 1 + factor;
+                    ty *= 1 + factor;
+                }
+
+
+                setTransform()
+            }
+
+            translateX = function (s) {
+                if (s == false) {
+                    tx += w() * factor;
+                } else {
+                    tx -= w() * factor;
+                }
+                setTransform()
+            }
+
+            translateY = function (s) {
+                if (s == false) {
+                    ty += h() * factor;
+                } else {
+                    ty -= h() * factor;
+                }
+                setTransform()
+            }
+
+            reset = function () {
+                z = 1.0;
+                tx = 0;
+                ty = 0;
+                setTransform();
+            }
+
+            help = function(){
+                alert("This is a visualization of SVG.\n"+
+                    "You can:\n"+
+                    "   Change Zoom:\n"+
+                    "       Zoom        (Ctrl + Up_arrow , Ctrl + Dowm_arrow)\n"+
+                    "   Change translation:\n"+
+                    "       Translate X (Left_arrow , Right_arrow)\n"+
+                    "       Translate Y (Up_arrow , Down_arrow)\n"+
+                    "   Reset View (R)\n"
+                        );
+            }
+
+            document.onkeydown = function (_event_) {
+                var winObj = checkEventObj(_event_);
+                var intKeyCode = winObj.keyCode;
+                var intAltKey = winObj.altKey;
+                var intCtrlKey = winObj.ctrlKey;
+            	function finishKey() {
+              	  winObj.keyCode = intKeyCode = REMAP_KEY_T;
+              	  winObj.returnValue = false;
+           	     return false;
+        	    }
+
+
+                // 1° --- Access with [ALT/CTRL+Key]
+                if (intAltKey || intCtrlKey) {
+
+                    if (intKeyCode == KEY_RIGHT || intKeyCode == KEY_UP) {
+                        zoom(true);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_LEFT || intKeyCode == KEY_DOWN) {
+                        zoom(false);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_R){
+                        reset();
+                        return finishKey();
+                    }
+                }
+                // 2 ° --- Access without [ALT/CTRL+Key]
+                else {
+
+                    if (intKeyCode == KEY_RIGHT) {
+                        translateX(true);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_LEFT) {
+                        translateX(false);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_UP) {
+                        translateY(false);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_DOWN) {
+                        translateY(true);
+                        return finishKey();
+                    } else if (intKeyCode == KEY_R){
+                        reset();
+                        return finishKey();
+                    }
+
+                }
+            }
+			 var zoonables = document.querySelectorAll(".expression");
+            zoonables.forEach(function(d,i){
+                d.setAttribute("style","cursor: pointer;");
+                d.addEventListener("click",function(){
+                    reset();
+                    var svg = document.querySelector("svg");
+                    
+                    var w = this.getBoundingClientRect();
+                    var h = w.height*z,
+                        x = (w.x-svg.getBoundingClientRect().x)*z,
+                        y = (w.y-svg.getBoundingClientRect().y)*z;
+                    w = w.width*z;
+
+                    x-=w/2;
+                    w+=w/2;
+                    
+                    z = Math.min(svg.getBoundingClientRect().width/w,svg.getBoundingClientRect().height/h);
+                    tx = -x*z;
+                    ty = -y*z;
+
+                    setTransform();
+                },false);
+            });
+        })()
+</script>
+
+
+</body>
+
+
+</html>
