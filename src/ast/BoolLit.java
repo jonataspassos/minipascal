@@ -1,12 +1,13 @@
 package ast;
 
+import checker.OpType;
+
 public class BoolLit extends Lit {
 
 	private boolean value;
 
 	public BoolLit(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean isValue() {
@@ -27,5 +28,10 @@ public class BoolLit extends Lit {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitBoolLit(this);
+	}
+
+	@Override
+	public Type getType() {
+		return OpType.bool;
 	};
 }

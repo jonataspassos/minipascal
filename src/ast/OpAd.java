@@ -1,23 +1,18 @@
 package ast;
 
-public class OpAd extends AST {
+public class OpAd extends Op {
 	// +| - | or
-	public static final char tPlus = 'm';
-	public static final char tMinus = 'n';
+	public static final char tPlus = '+';
+	public static final char tMinus = '-';
 	public static final char tOr = 'o';
-	private char op;
+	
 
 	public OpAd(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
-	}
-
-	public char getOp() {
-		return op;
 	}
 
 	public OpAd setOp(char op) {
-		this.op = op;
+		super.setOp(op);
 		return this;
 	}
 

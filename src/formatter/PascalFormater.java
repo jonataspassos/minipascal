@@ -28,14 +28,14 @@ public class PascalFormater extends Formatter {
 		this.out += " then\n";
 		this.level++;
 		ast.getCommand(true).visit(this);
-		this.out += "\n";
+		//this.out += "\n";
 		this.level--;
 		if (ast.getCommand(false) != null) {
 			identation();
 			this.out += "else\n";
 			this.level++;
 			ast.getCommand(false).visit(this);
-			this.out += "\n";
+			//this.out += "\n";
 			this.level--;
 		}
 	}
@@ -48,7 +48,7 @@ public class PascalFormater extends Formatter {
 		this.out += " then\n";
 		this.level++;
 		ast.getCommand().visit(this);
-		this.out += "\n";
+		//this.out += "\n";
 		this.level--;
 	}
 
@@ -124,7 +124,7 @@ public class PascalFormater extends Formatter {
 		this.out += "program "+ast.getId() + ";\n";
 		this.level++;
 		for(int i=0;i<ast.getDeclaration().size();i++) {
-			ast.getA(i).visit(this);
+			ast.getDeclaration(i).visit(this);
 		}
 		ast.getMc().visit(this);
 		this.out = this.out.substring(0,this.out.length()-1)+".";
@@ -164,11 +164,30 @@ public class PascalFormater extends Formatter {
 		case OpAd.tMinus:
 			this.out += "-";
 			break;
-		case OpAd.tOr:
+			case OpBolAd.tOr:
 			this.out += "or";
 			break;
 		}
 	}
+	
+//	@Override
+//	public void visitOpBolAd(OpBolAd ast) {
+//		switch(ast.getOp()) {
+//		case OpBolAd.tOr:
+//			this.out += "or";
+//			break;
+//		}
+//		
+//	}
+//
+//	@Override
+//	public void visitOpBolMul(OpBolMul ast) {
+//		switch(ast.getOp()) {
+//		case OpBolMul.tAnd:
+//			this.out += "and";
+//			break;
+//		}
+//	}
 
 	@Override
 	public void visitOpMul(OpMul ast) {
@@ -179,7 +198,7 @@ public class PascalFormater extends Formatter {
 		case OpMul.tDivision:
 			this.out += "/";
 			break;
-		case OpMul.tAnd:
+		case OpBolMul.tAnd:
 			this.out += "and";
 			break;
 		}

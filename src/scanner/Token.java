@@ -71,8 +71,10 @@ public class Token {
 	 * @param line - informa a linha do token
 	 * @param informa a coluna do token
 	 * @return um objeto Token informando o token inválido
+	 * @throws ScannerException 
 	 * */
-	public static Token invalid(String spelling, int line, int column) {
+	public static Token invalid(String spelling, int line, int column){
+		//throw new InvalidTokenException(new Token(invalidCode,spelling,line,column));
 		return new Token(invalidCode, spelling, line, column);
 	}
 	

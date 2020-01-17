@@ -6,7 +6,6 @@ public class Expression extends Factor {
 
 	public Expression(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public SimpleExpression[] getA() {
@@ -33,5 +32,12 @@ public class Expression extends Factor {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitExpression(this);
+	}
+
+	
+	//Context
+	@Override
+	public Type getType() {
+		return this.op!=null?this.op.getType():a[0].getType();
 	};
 }

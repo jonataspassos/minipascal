@@ -27,6 +27,10 @@ public interface Visitor {
 	public void visitVariable(Variable ast);
 
 	public void visitOpAd(OpAd ast);
+	
+//	public void visitOpBolAd(OpBolAd ast);
+//	
+//	public void visitOpBolMul(OpBolMul ast);
 
 	public void visitOpMul(OpMul ast);
 

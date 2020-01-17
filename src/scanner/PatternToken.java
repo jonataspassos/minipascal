@@ -170,4 +170,24 @@ public class PatternToken {
 //		patternToken.listCombined[1].getToken();
 //		patternToken.listCombined[2].getToken();
 //	}
+	
+	public String getSpelling(int kind) {
+		for(TokenType i : this.list) {
+			if(i.nStart == kind && i.any) {
+				if(i.type == 'n') {
+					return "0";
+				}else if(i.type == 'a') {
+					return "identificador";
+				}
+			}else if(i.nStart<kind && i.nStart+i.list.length >=kind) {
+				return i.list[kind-i.nStart-1];
+			}
+		}
+		for(CombinedTokens i : this.listCombined) {
+			if(i.kind == kind) {
+				return i.getToken().spelling;
+			}
+		}
+		return "";
+	}
 }

@@ -1,5 +1,6 @@
 package ast;
 
+import checker.OpType;
 import utils.MyString;
 import utils.StringBuffer;
 
@@ -9,7 +10,6 @@ public class FloatLit extends Lit {
 
 	public FloatLit(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public float getValue() {
@@ -41,11 +41,17 @@ public class FloatLit extends Lit {
 		decimal = MyString.toInt(temp);
 
 		setValue((float)(inteira + decimal/Math.pow(10.0, casas)));
-		System.out.println((float)(inteira + decimal/Math.pow(10.0, casas)));
 	}
 
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitFloatLit(this);
+	}
+	
+	
+	//Context
+	@Override
+	public Type getType() {
+		return OpType.real;
 	};
 }

@@ -8,7 +8,6 @@ public class MultiCommand extends Command {
 
 	public MultiCommand(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<Command> getCommand() {

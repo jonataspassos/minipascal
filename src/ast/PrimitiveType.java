@@ -10,7 +10,6 @@ public class PrimitiveType extends Type {
 
 	public PrimitiveType(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public char getType() {
@@ -25,5 +24,14 @@ public class PrimitiveType extends Type {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitPrimitiveType(this);
+	}
+
+	//Context
+	
+	@Override
+	public boolean equals(Type t) {
+		if(t instanceof PrimitiveType)
+			return this.getType() == ((PrimitiveType)t).getType();
+		else return false;
 	};
 }

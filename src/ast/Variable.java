@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class Variable extends Factor {
 	private String id;
 	private ArrayList<Expression> indexer = new ArrayList<Expression>();
+	
+	private Declaration declaration;
 
 	public Variable(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	public String getId() {
 		return id;
 	}
@@ -43,4 +44,29 @@ public class Variable extends Factor {
 		v.visitVariable(this);
 	};
 
+	// Contexto
+	public Declaration getDeclaration() {
+		return declaration;
+	}
+
+	public void setDeclaration(Declaration declaration) {
+		this.declaration = declaration;
+	}
+	
+	//TODO quando o tipo ret não for aggregateType, mas for indexado dentro, será uma indexação de uma variável primitiva
+	public Type typeIndexed() {
+		if(this.declaration!=null) {
+			Type ret = this.declaration.getType();
+			for (Object i : this.indexer.toArray()) {
+				ret = ((AggregateType)ret).getType();
+			}
+			return ret;
+		}
+		return null;
+	}
+
+	@Override
+	public Type getType() {
+		return typeIndexed();
+	}
 }

@@ -9,7 +9,6 @@ public class SimpleExpression extends AST {
 
 	public SimpleExpression(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<Term> getA() {
@@ -51,5 +50,10 @@ public class SimpleExpression extends AST {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitSimpleExpression(this);
+	}
+
+	// Context
+	public Type getType() {
+		return this.op.size()!=0?this.op.get(0).getType():a.get(0).getType();
 	};
 }

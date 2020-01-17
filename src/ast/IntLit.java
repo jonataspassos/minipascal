@@ -1,5 +1,6 @@
 package ast;
 
+import checker.OpType;
 import utils.MyString;
 
 public class IntLit extends Lit {
@@ -8,7 +9,6 @@ public class IntLit extends Lit {
 
 	public IntLit(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getValue() {
@@ -28,5 +28,10 @@ public class IntLit extends Lit {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitIntLit(this);
+	}
+
+	@Override
+	public Type getType() {
+		return OpType.integ;
 	};
 }

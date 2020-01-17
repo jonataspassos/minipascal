@@ -6,7 +6,6 @@ public class IterativeCommand extends Command {
 
 	public IterativeCommand(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Expression getExpression() {

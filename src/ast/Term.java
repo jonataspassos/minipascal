@@ -9,7 +9,6 @@ public class Term extends AST {
 
 	public Term(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<Factor> getA() {
@@ -51,6 +50,11 @@ public class Term extends AST {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitTerm(this);
+	}
+
+	// Context
+	public Type getType() {
+		return this.op.size()!=0?this.op.get(this.op.size()-1).getType():a.get(0).getType();
 	};
 
 }

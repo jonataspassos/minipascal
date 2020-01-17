@@ -10,7 +10,6 @@ public class Program extends AST {
 
 	public Program(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getId() {
@@ -46,7 +45,7 @@ public class Program extends AST {
 		return this;
 	}
 
-	public Declaration getA(int index) {
+	public Declaration getDeclaration(int index) {
 		return declaration.get(index);
 	}
 

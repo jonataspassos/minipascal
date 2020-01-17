@@ -7,7 +7,6 @@ public class AggregateType extends Type {
 
 	public AggregateType(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public int[] getIndex() {
@@ -35,6 +34,19 @@ public class AggregateType extends Type {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitAggregateType(this);
+	}
+
+	//Context
+	@Override
+	public boolean equals(Type t) {
+		if(t instanceof AggregateType) {
+			boolean ret = true;
+			ret = ret && (this.index[1]-this.index[0])==(((AggregateType)t).index[1]-((AggregateType)t).index[0]);//Index size
+			ret = ret && (this.getType().equals(((AggregateType)t).getType()));//Type of array
+			
+			return ret;
+		}
+		return false;
 	}
 	
 	

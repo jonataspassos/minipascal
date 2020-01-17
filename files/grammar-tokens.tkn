@@ -1,4 +1,4 @@
-reserve-words 10 a # tipo alfanumérico # { 
+identifier-words 10 a # tipo alfanumérico # { 
 	and array begin boolean
 	do else end false if
 	integer of or program

@@ -6,7 +6,6 @@ public class ConditionalCommand extends Command {
 
 	public ConditionalCommand(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Expression getExpression() {

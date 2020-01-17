@@ -1,17 +1,14 @@
 package printer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 import ast.*;
 import formatter.Formatter;
 import formatter.PascalFormater;
 import function.JD3String;
 import parser.Parser;
+import parser.ParserException;
 import visualization.Visualization;
-import select.AbstractSelect;
 import select.Select;
 
 public class Printer implements Visitor {
@@ -28,15 +25,23 @@ public class Printer implements Visitor {
 	private int height = 0;
 	private boolean bounding = true;
 
-	public static void main(String args[]) throws Exception {
-		String path = "src\\files\\grammar-tokens.tkn";
-		String src = "src\\files\\sc1.pas";
+	public static void main(String args[]) throws Exception{
+		String path = "files\\grammar-tokens.tkn";
+		String src = "files\\sc1.pas";
 		Printer p = new Printer();
 		Parser parser = new Parser(path, src);
+		AST program = null;
 
-		AST program = parser.parse();
+		try {
+			program = parser.parse();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		
 		Formatter f = new PascalFormater();
 		String formated = f.format(program);
+		System.out.println(formated);
 
 		p.print(program, "sc1.html");
 	}
@@ -66,7 +71,7 @@ public class Printer implements Visitor {
 		this.vis.tStyle().append(".boolean>rect").attr("fill", "blueviolet");
 		this.vis.tStyle().append(".boolean>text").attr("fill", "white").attr("stroke", "black").attr("stroke-width",
 				"0.2px");
-		this.vis.tStyle().append(".none>rect").attr("fill", "gray");
+		this.vis.tStyle().append(".null>rect").attr("fill", "gray");
 		this.vis.tStyle().append(".variable>rect").attr("fill", "coral");
 
 		this.vis.tStyle().append(".expression").attr("stroke", "black").attr("stroke-width", "0.2px");
@@ -428,7 +433,7 @@ public class Printer implements Visitor {
 		if (bounding) {
 			s.append("rect").attr("y", -heightExpression / 2)
 					.attr("width", widthExpression).attr("height", heightExpression);
-			s.append("g").attr("class", "none").append("rect").attr("y", -heightExpression / 2)
+			s.append("g").attr("class", ""+ast.getType()).append("rect").attr("y", -heightExpression / 2)
 					.attr("width", widthSpaceLine).attr("height", heightExpression);
 			
 			Select exp = s.append("g");
@@ -500,7 +505,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitSimpleExpression(SimpleExpression ast) {
-		Select s = this.select.append("g").attr("class", "simple-expression none");
+		Select s = this.select.append("g").attr("class", "simple-expression "+ast.getType());
 		if (ast.getOp().size() == indexSimpleExpression) {
 			this.select = s;
 			ast.getA(indexSimpleExpression).visit(this);// Term
@@ -521,7 +526,7 @@ public class Printer implements Visitor {
 			Select a1 = s.append("g");
 			this.select = a1;
 			indexSimpleExpression++;
-			ast.visit(this);// Restante da expressão simples
+			ast.visit(this);// Restante da expressï¿½o simples
 			int a1W = this.width;
 			int a1H = this.height;
 			indexSimpleExpression--;
@@ -543,7 +548,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitTerm(Term ast) {
-		Select s = this.select.append("g").attr("class", "term none");
+		Select s = this.select.append("g").attr("class", "term "+ast.getType());
 
 		if (ast.getOp().size() == indexTerm) {
 			this.select = s;
@@ -552,9 +557,6 @@ public class Printer implements Visitor {
 
 			Select operator = s.append("g");
 			this.select = operator;
-			System.out.println(ast);
-			System.out.println(ast.getOp().size());
-			System.out.println(indexTerm);
 			ast.getOp(ast.getOp().size()-indexTerm-1).visit(this);
 			int opW = this.width;
 			int opH = this.height;
@@ -769,7 +771,7 @@ public class Printer implements Visitor {
 		inner = JD3String.filter(inner, width);
 
 		s.append("rect").attr("x", -width / 2).attr("width", width).attr("height", heightTextRect);
-		s.append("g").attr("class", "none").append("rect").attr("x", width / 2 - 2).attr("width", 3).attr("height",
+		s.append("g").attr("class", ""+ast.getType()).append("rect").attr("x", width / 2 - 2).attr("width", 3).attr("height",
 				heightTextRect);
 		s.append("text").attr("y", heightTextRect / 2).attr("dy", ".3em").innerText(inner);
 
@@ -779,7 +781,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpAd(OpAd ast) {
-		Select s = this.select.append("g").attr("class", "none");
+		Select s = this.select.append("g").attr("class", ""+ast.getType());
 		String inner = "";
 		int width = widthOp;
 
@@ -804,7 +806,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpMul(OpMul ast) {
-		Select s = this.select.append("g").attr("class", "none");
+		Select s = this.select.append("g").attr("class", ""+ast.getType());
 		String inner = "";
 		int width = widthOp;
 
@@ -830,7 +832,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpRel(OpRel ast) {
-		Select s = this.select.append("g").attr("class", "none");
+		Select s = this.select.append("g").attr("class", ""+ast.getType());
 		String inner = "";
 		int width = widthOp;
 
@@ -915,6 +917,8 @@ public class Printer implements Visitor {
 	}
 
 	public void print(AST ast, String path) throws Exception {
+		if(ast==null)
+			return;
 		this.vis.resetDynamic();
 
 		Select s = this.vis.tDynamic().append("g");

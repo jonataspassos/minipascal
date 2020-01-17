@@ -30,7 +30,7 @@ public class Scanner {
 		// Lista de tokens válidos com seus respectivos tipos e códigos
 		String path = "H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\grammar-tokens.tkn";
 		// Representa o código fonte da linguagem a ser compilada
-		String src = "H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\testeponto.txt";
+		String src = "H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\outros\\testeponto.txt";
 
 		// Constroi o sintático consumindo o arquivo de tokens e construindo o buffer
 		// com o código fonte
@@ -39,7 +39,11 @@ public class Scanner {
 		// Representação do sintático solicitando token a token recebendo um objeto do
 		// tipo Token
 		while (!sc.isEmpty()) {
-			System.out.println(sc.scan());
+			try {
+				System.out.println(sc.scan());
+			} catch (Exception e) {
+				System.err.println(e);
+			}
 		}
 
 	}
@@ -84,8 +88,9 @@ public class Scanner {
 	 * 
 	 * @return um objeto Token preenchido de acordo com as especificações do
 	 *         PatternToken
+	 * @throws ScannerException 
 	 */
-	public Token scan() {
+	public Token scan(){
 		// Consome os separadores e atualiza as linhas e colunas do buffer
 		sourceCode.consumeSeparators();
 
@@ -188,8 +193,9 @@ public class Scanner {
 	 * No caso deste método, a ideia básica é consumir até um token válido do tipo
 	 * recebido, separar token reconhecíveis de não reconheciveis para garantir que
 	 * a linguagem seja reconhecida da forma correta.
+	 * @throws ScannerException 
 	 */
-	private Token splitFirstTokenType(TokenType type) {
+	private Token splitFirstTokenType(TokenType type){
 		String ret = "";
 		// A limpeza de separadores e a verificação de buffer vazio já foi feita no
 		// método anterior
@@ -309,5 +315,11 @@ public class Scanner {
 		return new Token(type.nStart, ret, this.sourceCode.getLine(), this.sourceCode.getColumn());
 
 	}
+
+	public PatternToken getPt() {
+		return pt;
+	}
+	
+	
 
 }

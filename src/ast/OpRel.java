@@ -1,6 +1,6 @@
 package ast;
 
-public class OpRel extends AST {
+public class OpRel extends Op {
 	// < | > | <= | >= | = | <>
 	public static final char tLessT = '<';
 	public static final char tGreatT = '>';
@@ -9,19 +9,12 @@ public class OpRel extends AST {
 	public static final char tEq = '=';
 	public static final char tNotEq = '!';
 
-	private char op;
-
 	public OpRel(int line, int column) {
 		super(line, column);
-		// TODO Auto-generated constructor stub
 	}
-
-	public char getOp() {
-		return op;
-	}
-
+	
 	public OpRel setOp(char op) {
-		this.op = op;
+		super.setOp(op);
 		return this;
 	}
 

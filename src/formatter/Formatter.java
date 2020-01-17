@@ -47,6 +47,8 @@ public abstract class Formatter implements Visitor {
 
 	public String format(AST ast) {
 		this.out = "";
+		if(ast==null)
+			return "";
 		ast.visit(this);
 		return this.out;
 	}
