@@ -74,8 +74,8 @@ public class Checker implements Visitor {
 		ast.getVariable().visit(this);//Sets declaration of variable or cause exception
 		ast.getExpression().visit(this);//Sets type of expression
 		
-		if(!ast.getVariable().getType().equals(ast.getExpression().getType())) {
-			//TODO erro, tipos incompatíveis
+		if(ast.getVariable().getType()==null || !ast.getVariable().getType().equals(ast.getExpression().getType())) {
+			//TODO erro, tipos incompatï¿½veis
 			System.err.print("Erro AssignmentCommand");
 			System.out.println(ast);
 		}
@@ -85,7 +85,7 @@ public class Checker implements Visitor {
 	public void visitConditionalCommand(ConditionalCommand ast) {
 		ast.getExpression().visit(this);
 		if(!ast.getExpression().getType().equals(OpType.bool)) {
-			//TODO erro, expressão deve retornar um valor lógico
+			//TODO erro, expressï¿½o deve retornar um valor lï¿½gico
 			System.err.print("Erro ConditionalCommand");
 			System.out.println(ast);
 		}
@@ -99,7 +99,7 @@ public class Checker implements Visitor {
 	public void visitIterativeCommand(IterativeCommand ast) {
 		ast.getExpression().visit(this);
 		if(!ast.getExpression().getType().equals(OpType.bool)) {
-			//TODO erro, expressão deve retornar um valor lógico
+			//TODO erro, expressï¿½o deve retornar um valor lï¿½gico
 			System.err.print("Erro IterativeCommand");
 			System.out.println(ast);
 		}
@@ -117,7 +117,7 @@ public class Checker implements Visitor {
 	public void visitDeclaration(Declaration ast) {
 		for (Object i : ast.getId().toArray()) {
 			if(identifierTable.enter((String) i, ast)) {
-				// TODO Tratar nome já declarado
+				// TODO Tratar nome jï¿½ declarado
 				System.err.print("Erro Declaration");
 				System.out.println(ast);
 			}
@@ -141,10 +141,9 @@ public class Checker implements Visitor {
 			operands[0] = ast.getA(0).getType();
 			operands[1] = ast.getA(1).getType();
 			OpType opt = OpType.search(op.getOp(), operands);
-			if(opt!=null)
-				op.setOpType(opt);
-			else {
-				//TODO operação não existe
+			op.setOpType(opt);
+			if(opt.ret==null){
+				//TODO operaï¿½ï¿½o nï¿½o existe
 				System.err.print("Erro Expression");
 				System.out.println(ast);
 			}
@@ -166,10 +165,9 @@ public class Checker implements Visitor {
 			operands[0] = ast.getA(ast.getOp().size()-1).getType();
 			operands[1] = ast.getA(ast.getOp().size()).getType();
 			OpType opt = OpType.search(op.getOp(), operands);
-			if(opt!=null)
-				op.setOpType(opt);
-			else {
-				//TODO operação não existe
+			op.setOpType(opt);
+			if(opt.ret==null){
+				//TODO operaï¿½ï¿½o nï¿½o existe
 				System.err.print("Erro SimpleExpression");
 				System.out.println(ast);
 			}
@@ -178,12 +176,9 @@ public class Checker implements Visitor {
 				op.visit(this);
 				operands[0] = ast.getA(i).getType();
 				operands[1] = ast.getOp(i+1).getType();
-				
-				opt = OpType.search(op.getOp(), operands);
-				if(opt!=null)
-					op.setOpType(opt);
-				else {
-					//TODO operação não existe
+				op.setOpType(opt);
+				if(opt.ret==null){
+					//TODO operaï¿½ï¿½o nï¿½o existe
 					System.err.print("Erro SimpleExpression");
 					System.out.println(ast);
 				}
@@ -207,10 +202,9 @@ public class Checker implements Visitor {
 			
 			operands[1] = ast.getA(1).getType();
 			OpType opt = OpType.search(op.getOp(), operands);
-			if(opt!=null)
-				op.setOpType(opt);
-			else {
-				//TODO operação não existe
+			op.setOpType(opt);
+			if(opt.ret==null){
+				//TODO operaï¿½ï¿½o nï¿½o existe
 				System.err.print("Erro Term");
 				System.out.println(ast);
 			}
@@ -222,10 +216,9 @@ public class Checker implements Visitor {
 				operands[1] = ast.getA(i+1).getType();
 				
 				opt = OpType.search(op.getOp(), operands);
-				if(opt!=null)
-					op.setOpType(opt);
-				else {
-					//TODO operação não existe
+				op.setOpType(opt);
+				if(opt.ret==null){
+					//TODO operaï¿½ï¿½o nï¿½o existe
 					System.err.print("Erro Term");
 					System.out.println(ast);
 				}
@@ -252,12 +245,16 @@ public class Checker implements Visitor {
 		if(dec != null)
 			ast.setDeclaration(dec);
 		else {
-			//TODO quando ele retornar declaração nula, ele estará referenciando uma variavel não declarada 
+			//TODO quando ele retornar declaraï¿½ï¿½o nula, ele estarï¿½ referenciando uma variavel nï¿½o declarada 
 			System.err.print("Erro Variable");
 			System.out.println(ast);
 		}
 		for(Object i : ast.getIndexer().toArray()) {
 			((Expression)i).visit(this);
+			if(!((Expression)i).getType().equals(OpType.integ)) {
+				System.err.print("Erro Indexer");
+				System.out.println(i);
+			}
 		}
 	}
 

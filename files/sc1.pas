@@ -2,16 +2,17 @@ program sc1;
 var y : integer;
 var x,z : real;
 var b: boolean;
+var p: array[10~10] of array[10~10] of boolean;
 begin
 	x := 1.0;
 	y := 2;
 	z := x+y*45*(30+45);
 	if x=y then
 	begin
-		x := 3*4*5+0.1*0.2*0.3+3*0.5*4.0;
+		x := 3*y*5+1*2*y+3*x*4.0;
 		x := (y-x)/2;
-		b := (x=y) or (z=x);
+		p[y][y] := (x=y) or (z=x);
 	end
 	else
-		b := (x = z) or (y = x);
+		b := (x = y) or (y = x);
 end.

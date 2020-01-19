@@ -94,7 +94,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitAggregateType(AggregateType ast) {
-		Select s = this.select.append("g").attr("class", "array");
+		Select s = this.select.append("g").attr("class", "block array");
 		int width = widthAggregateType;
 
 		s.append("rect").attr("x", -width / 2).attr("width", width).attr("height", heightAggregateType);
@@ -124,7 +124,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitAssignmentCommand(AssignmentCommand ast) {
-		Select s = this.select.append("g").attr("class", "assignment command");
+		Select s = this.select.append("g").attr("class", "block assignment command");
 
 		Select background = s.append("rect").attr("style", "fill:white;opacity:0.7;");
 
@@ -172,7 +172,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitConditionalCommand(ConditionalCommand ast) {
-		Select s = this.select.append("g").attr("class", "conditional command");
+		Select s = this.select.append("g").attr("class", "block conditional command");
 
 		Select background = s.append("rect").attr("style", "fill:white;opacity:0.7;");
 
@@ -258,7 +258,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitIterativeCommand(IterativeCommand ast) {
-		Select s = this.select.append("g").attr("class", "iterative command");
+		Select s = this.select.append("g").attr("class", "block iterative command");
 
 		Select background = s.append("rect").attr("style", "fill:white;opacity:0.7;");
 
@@ -310,7 +310,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitMultiCommand(MultiCommand ast) {
-		Select s = this.select.append("g").attr("class", "multi command");
+		Select s = this.select.append("g").attr("class", "block multi command");
 
 		Select background = s.append("rect").attr("style", "fill:white;opacity:0.7;");
 
@@ -348,7 +348,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitDeclaration(Declaration ast) {
-		Select s = this.select.append("g").attr("class", "declaration");
+		Select s = this.select.append("g").attr("class", "block declaration");
 
 		Select background = s.append("rect").attr("style", "fill:white;opacity:0.7;");
 
@@ -428,12 +428,12 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitExpression(Expression ast) {
-		Select s = this.select.append("g").attr("class", "expression");
+		Select s = this.select.append("g").attr("class", "block expression");
 
 		if (bounding) {
 			s.append("rect").attr("y", -heightExpression / 2)
 					.attr("width", widthExpression).attr("height", heightExpression);
-			s.append("g").attr("class", ""+ast.getType()).append("rect").attr("y", -heightExpression / 2)
+			s.append("g").attr("class", (""+ast.getType()).split(" ")[0]).append("rect").attr("y", -heightExpression / 2)
 					.attr("width", widthSpaceLine).attr("height", heightExpression);
 			
 			Select exp = s.append("g");
@@ -505,7 +505,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitSimpleExpression(SimpleExpression ast) {
-		Select s = this.select.append("g").attr("class", "simple-expression "+ast.getType());
+		Select s = this.select.append("g").attr("class", "block simple-expression "+(""+ast.getType()).split(" ")[0]);
 		if (ast.getOp().size() == indexSimpleExpression) {
 			this.select = s;
 			ast.getA(indexSimpleExpression).visit(this);// Term
@@ -548,7 +548,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitTerm(Term ast) {
-		Select s = this.select.append("g").attr("class", "term "+ast.getType());
+		Select s = this.select.append("g").attr("class", "block term "+(""+ast.getType()).split(" ")[0]);
 
 		if (ast.getOp().size() == indexTerm) {
 			this.select = s;
@@ -593,7 +593,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitProgram(Program ast) {
-		Select s = this.select.append("g").attr("class", "program");
+		Select s = this.select.append("g").attr("class", "block program");
 		int width = 0;
 		int height = 0;
 
@@ -701,7 +701,7 @@ public class Printer implements Visitor {
 			break;
 		}
 
-		Select s = this.select.append("g").attr("class", type);
+		Select s = this.select.append("g").attr("class", "block "+ type);
 		int width = widthPrimitiveType;
 
 		s.append("rect").attr("x", -width / 2).attr("width", width).attr("height", heightTextRect);
@@ -716,7 +716,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitVariable(Variable ast) {
-		Select s = this.select.append("g").attr("class", "variable");
+		Select s = this.select.append("g").attr("class", "block variable");
 
 		int width = widthVariable;
 
@@ -735,7 +735,7 @@ public class Printer implements Visitor {
 			int maxWidth = width;
 			Select indexers = s.append("g");
 			for (int i = ast.getIndexer().size() - 1; i >= 0; i--) {
-				Select indexer = indexers.append("g").attr("transform", "translate(" + (widthSpaceLine * i) + ","
+				Select indexer = indexers.append("g").attr("class", "block").attr("transform", "translate(" + (widthSpaceLine * i) + ","
 						+ (heightTextRect + heightSpace + (heightExpression + 3) * i) + ")");
 				indexer.append("line").attr("x1", 0).attr("x2", 0).attr("y2", 0).attr("y1",
 						-heightSpace - (heightExpression + 3) * i);
@@ -771,7 +771,7 @@ public class Printer implements Visitor {
 		inner = JD3String.filter(inner, width);
 
 		s.append("rect").attr("x", -width / 2).attr("width", width).attr("height", heightTextRect);
-		s.append("g").attr("class", ""+ast.getType()).append("rect").attr("x", width / 2 - 2).attr("width", 3).attr("height",
+		s.append("g").attr("class", (""+ast.getType()).split(" ")[0]).append("rect").attr("x", width / 2 - 2).attr("width", 3).attr("height",
 				heightTextRect);
 		s.append("text").attr("y", heightTextRect / 2).attr("dy", ".3em").innerText(inner);
 
@@ -781,7 +781,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpAd(OpAd ast) {
-		Select s = this.select.append("g").attr("class", ""+ast.getType());
+		Select s = this.select.append("g").attr("class", (""+ast.getType()).split(" ")[0]);
 		String inner = "";
 		int width = widthOp;
 
@@ -806,7 +806,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpMul(OpMul ast) {
-		Select s = this.select.append("g").attr("class", ""+ast.getType());
+		Select s = this.select.append("g").attr("class", (""+ast.getType()).split(" ")[0]);
 		String inner = "";
 		int width = widthOp;
 
@@ -832,7 +832,7 @@ public class Printer implements Visitor {
 
 	@Override
 	public void visitOpRel(OpRel ast) {
-		Select s = this.select.append("g").attr("class", ""+ast.getType());
+		Select s = this.select.append("g").attr("class", (""+ast.getType()).split(" ")[0]);
 		String inner = "";
 		int width = widthOp;
 

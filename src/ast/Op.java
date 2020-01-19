@@ -4,6 +4,8 @@ import checker.OpType;
 
 public abstract class Op extends AST {
 	
+	public static final char none = '\0';
+
 	private char op;
 	
 	private OpType opType;

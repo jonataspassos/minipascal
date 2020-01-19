@@ -1,5 +1,6 @@
 package checker;
 
+import ast.Op;
 import ast.OpAd;
 import ast.OpMul;
 import ast.OpRel;
@@ -13,13 +14,15 @@ public abstract class OpType {
 
 	public final static Type bool = new PrimitiveType(0, 0).setType(PrimitiveType.tBoolean),
 			integ = new PrimitiveType(0, 0).setType(PrimitiveType.tInt),
-			real = new PrimitiveType(0, 0).setType(PrimitiveType.tReal);
+			real = new PrimitiveType(0, 0).setType(PrimitiveType.tReal),
+			none = null;
 
 	private final static Type[][] operandsType = { // Combinations of operands
 			{ bool, bool }, { bool, integ }, { bool, real }, // bool with
 			{ integ, bool }, { integ, integ }, { integ, real }, // integ with
 			{ real, bool }, { real, integ }, { real, real }, // real with
-			{ bool }, { integ }, { real }// Unary operations for
+			{ bool }, { integ }, { real },// Unary operations for
+			{none,none},{none} // Not recognizable
 	};
 
 	public final static OpType[] table = { // Operations Types
@@ -821,7 +824,7 @@ public abstract class OpType {
 			if(i.length == operands.length) {
 				boolean thereUnequal = false;
 				for(int j=0;j<i.length;j++) {
-					if(!operands[j].equals(i[j]))
+					if(operands[j]==null || !operands[j].equals(i[j]))
 						thereUnequal = true;
 				}
 				if(!thereUnequal)
@@ -838,7 +841,23 @@ public abstract class OpType {
 				if(op == i.op && operands == i.operands)
 					return i;
 			}
-		return null;
+		return new OpType(op,operandsType[12],null) {
+			
+			@Override
+			public String sample() {
+				return "Not recognizable";
+			}
+			
+			@Override
+			public String instruction() {
+				return "HALT";
+			}
+			
+			@Override
+			public String description() {
+				return "Not recognizable";
+			}
+		};
 	}
 	
 	public OpType(char op, Type[] operands, Type ret) {
