@@ -32,27 +32,6 @@ import printer.Printer;
 public class Checker implements Visitor {
 
 	private IdentifierTable identifierTable;
-	
-	public static void main(String args[]) throws Exception{
-		String path = "files\\grammar-tokens.tkn";
-		String src = "files\\sc1.pas";
-		Printer p = new Printer();
-		Parser parser = new Parser(path, src);
-		AST program = null;
-
-		try {
-			program = parser.parse();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		p.print(program, "sc1_before.html");
-	
-		Checker ch = new Checker();
-		ch.check(program);
-
-		p.print(program, "sc1_after.html");
-	}
 
 	public Checker() {
 		super();

@@ -9,23 +9,6 @@ public class Parser {
 	private Token currentToken;
 	private Scanner scanner;
 
-	public static void main(String[] args) throws ParserException {
-
-		// Lista de tokens válidos com seus respectivos tipos e códigos
-		String path = "src\\files\\grammar-tokens.tkn";
-		// Representa o código fonte da linguagem a ser compilada
-		String src = "src\\files\\sc1.pas";
-
-		// Constroi o sintático consumindo o arquivo de tokens e construindo o buffer
-		// com o código fonte
-		Parser parser = new Parser(path, src);
-
-		// Analisando sintaticamente o código
-
-		parser.parse();
-
-	}
-
 	public Parser(String pathTkn, String pathSrc) {
 		this.scanner = new Scanner(pathTkn, pathSrc);
 	}

@@ -24,30 +24,7 @@ import utils.FileBuffer;
 public class Scanner {
 	private PatternToken pt;
 	private Buffer sourceCode;
-
-	public static void main(String[] args) {
-
-		// Lista de tokens válidos com seus respectivos tipos e códigos
-		String path = "H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\grammar-tokens.tkn";
-		// Representa o código fonte da linguagem a ser compilada
-		String src = "H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\outros\\testeponto.txt";
-
-		// Constroi o sintático consumindo o arquivo de tokens e construindo o buffer
-		// com o código fonte
-		Scanner sc = new Scanner(path, src);
-
-		// Representação do sintático solicitando token a token recebendo um objeto do
-		// tipo Token
-		while (!sc.isEmpty()) {
-			try {
-				System.out.println(sc.scan());
-			} catch (Exception e) {
-				System.err.println(e);
-			}
-		}
-
-	}
-
+	
 	/**
 	 * Envie como parametro de construção os buffers já instanciados de:
 	 * 

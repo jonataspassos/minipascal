@@ -25,27 +25,6 @@ public class Printer implements Visitor {
 	private int height = 0;
 	private boolean bounding = true;
 
-	public static void main(String args[]) throws Exception{
-		String path = "files\\grammar-tokens.tkn";
-		String src = "files\\sc1.pas";
-		Printer p = new Printer();
-		Parser parser = new Parser(path, src);
-		AST program = null;
-
-		try {
-			program = parser.parse();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		
-		Formatter f = new PascalFormater();
-		String formated = f.format(program);
-		System.out.println(formated);
-
-		p.print(program, "sc1.html");
-	}
-
 	public Printer() throws Exception {
 		this(640, 480);
 	}
