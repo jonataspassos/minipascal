@@ -98,6 +98,9 @@ public class Parser {
 							+ getSpelling(PascalToken.tBegin)));
 			Command ret = new MultiCommand(currentToken.line,currentToken.column);
 			acceptIt();
+			if(FF1Command()) {
+				return parseCommand();
+			}
 			return ret;
 		}
 	}
@@ -153,6 +156,11 @@ public class Parser {
 
 		return term;
 	}
+	
+	private boolean FF1Factor() {
+		byte kind = currentToken.kind;
+		return kind == PascalToken.tIdentifier || kind == PascalToken.tFalse || kind == PascalToken.tTrue || kind == PascalToken.tIntegerLit|| kind == PascalToken.tFloatLit|| kind == PascalToken.tLParen;
+	}
 
 	private Factor parseFactor(){
 		Lit lit = null;
@@ -191,6 +199,9 @@ public class Parser {
 			lit = new BoolLit(currentToken.line, currentToken.column);
 			lit.setValue("false");// <bool-lit>
 			acceptIt();
+			if(FF1Factor()) {
+				return parseFactor();
+			}
 			return lit;
 		}
 	}
@@ -208,6 +219,11 @@ public class Parser {
 		accept(PascalToken.tPeriod);// .
 
 		return program;
+	}
+	
+	private boolean FF1Type() {
+		byte kind = currentToken.kind;
+		return kind == PascalToken.tArray || kind == PascalToken.tInteger || kind == PascalToken.tReal || kind == PascalToken.tBoolean;
 	}
 
 	private Type parseType(){
@@ -257,6 +273,9 @@ public class Parser {
 			type = new PrimitiveType(currentToken.line, currentToken.column);
 			((PrimitiveType) type).setType(PrimitiveType.tBoolean);
 			acceptIt();
+			if(FF1Type()) {
+				return parseType();
+			}
 		}
 		return type;
 	}
@@ -298,6 +317,9 @@ public class Parser {
 					+ getSpelling(PascalToken.tDash) + " ' , ' " + getSpelling(PascalToken.tOr)));
 			ret = new OpAd(currentToken.line, currentToken.column);
 			acceptIt();
+			if(FF1OpAd()) {
+				return parseOpAd();
+			}
 			return ret.setOp(OpAd.tOr);
 		}
 	}
@@ -327,6 +349,9 @@ public class Parser {
 					+ getSpelling(PascalToken.tFwdSlash) + " ' , ' " + getSpelling(PascalToken.tAnd)));
 			ret = new OpMul(currentToken.line, currentToken.column);
 			acceptIt();
+			if(FF1OpMul()) {
+				return parseOpMul();
+			}
 			return ret.setOp(OpMul.tAnd);
 		}
 	}
@@ -372,6 +397,9 @@ public class Parser {
 							+ getSpelling(PascalToken.tEquals) + " ' , ' " + getSpelling(PascalToken.tUnLike)));
 			ret = new OpRel(currentToken.line, currentToken.column);
 			acceptIt();
+			if(FF1OpRel()) {
+				return parseOpRel();
+			}
 			return ret.setOp(OpRel.tNotEq);
 		}
 	}
@@ -385,6 +413,11 @@ public class Parser {
 			mpe.add(new ParserException(currentToken, getSpelling(expectedKind)));
 			Token ret = new Token(expectedKind,getSpelling(expectedKind),currentToken.line,currentToken.column);
 			currentToken = scanner.scan();
+			if (currentToken.kind == expectedKind) {
+				Token ret2 = currentToken;
+				currentToken = scanner.scan();
+				return ret2;
+			}
 			return ret;
 		}
 	}

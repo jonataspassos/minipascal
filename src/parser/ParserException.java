@@ -28,5 +28,20 @@ public class ParserException extends CompilerException{
 		return super.getMessage() + "Parser Exception\n\tThis token wasn't expected: ' "+this.invalid.spelling+" '\n"
 				+ "\tWas expected: ' "+expects+" '\n";
 	}
+	/*@Override
+	public String getMessage() {
+		String ast = (""+this.ast);
+		if(ast.charAt(ast.length()-1)=='\n')
+			ast = ast.substring(0, ast.length()-1);
+		
+		ast = ast.replaceAll("\n", "\n\t");
+		
+		return super.getMessage()+"Parser Exception: \n"+
+					"\t--------------------------------\n"+
+					"\t"+ast.substring(0, ast.length()<=50?ast.length():50)+"\n"+
+					"\t--------------------------------\n"+
+					"\tThis token wasn't expected: ' "+this.invalid.spelling+" '\\n\"\r\n" 
+					+ "\tWas expected: ' "+expects+" '\n";
+	}*/
 
 }
