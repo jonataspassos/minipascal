@@ -53,11 +53,11 @@ public class Variable extends Factor {
 		this.declaration = declaration;
 	}
 	
-	//TODO quando o tipo ret não for aggregateType, mas for indexado dentro, será uma indexação de uma variável primitiva
 	public Type typeIndexed() {
 		if(this.declaration!=null) {
 			Type ret = this.declaration.getType();
 			for (Object i : this.indexer.toArray()) {
+				//this can generate a exception cast
 				ret = ((AggregateType)ret).getType();
 				
 			}

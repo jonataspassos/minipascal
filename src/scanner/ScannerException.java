@@ -16,7 +16,7 @@ public class ScannerException extends CompilerException {
 	
 	@Override
 	public String getMessage() {
-		return super.getMessage() + "Pré-processamento\n";
+		return super.getMessage() + "Scanner Exception\n";
 	}
 
 }

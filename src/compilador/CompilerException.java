@@ -19,7 +19,7 @@ public class CompilerException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "ERRO ["+(line+1)+" : "+(column+1)+"] ";
+		return "ERROR ["+(line+1)+" : "+(column+1)+"] ";
 	}
 
 	public int getErrorCode() {

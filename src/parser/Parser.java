@@ -2,12 +2,12 @@ package parser;
 
 import ast.*;
 import scanner.Scanner;
-import scanner.ScannerException;
 import scanner.Token;
 
 public class Parser {
 	private Token currentToken;
 	private Scanner scanner;
+	private MultiParserException mpe = new MultiParserException();
 
 	public Parser(String pathTkn, String pathSrc) {
 		this.scanner = new Scanner(pathTkn, pathSrc);
@@ -18,12 +18,13 @@ public class Parser {
 		acceptIt();
 		tree = parseProgram();
 		if (currentToken.kind != Token.endOfFileCode) {
-			throw new ParserException(currentToken, "EOF");
+			mpe.add(new ParserException(currentToken, "EOF"));
 		}
+		mpe.check();
 		return tree;
 	}
 
-	private AssignmentCommand parseAssignmentCommand() throws ParserException {
+	private AssignmentCommand parseAssignmentCommand(){
 		AssignmentCommand command = new AssignmentCommand(currentToken.line, currentToken.column);
 
 		command.setVariable(parseVariable());// <variable>
@@ -33,7 +34,7 @@ public class Parser {
 		return command;
 	}
 
-	private ConditionalCommand parseConditionalCommand() throws ParserException {
+	private ConditionalCommand parseConditionalCommand(){
 		ConditionalCommand command = new ConditionalCommand(currentToken.line, currentToken.column);
 
 		accept(PascalToken.tIf);// if
@@ -48,7 +49,7 @@ public class Parser {
 		return command;
 	}
 
-	private IterativeCommand parseIterativeCommand() throws ParserException {
+	private IterativeCommand parseIterativeCommand(){
 		IterativeCommand command = new IterativeCommand(currentToken.line, currentToken.column);
 		accept(PascalToken.tWhile);// while
 		command.setExpression(parseExpression());// <expression>
@@ -64,7 +65,7 @@ public class Parser {
 				|| kind == PascalToken.tBegin;
 	}
 
-	private MultiCommand parseMultiCommand() throws ParserException {
+	private MultiCommand parseMultiCommand(){
 		MultiCommand command = new MultiCommand(currentToken.line, currentToken.column);
 
 		accept(PascalToken.tBegin);// begin
@@ -76,7 +77,7 @@ public class Parser {
 		return command;
 	}
 
-	private Command parseCommand() throws ParserException {
+	private Command parseCommand(){
 		switch (currentToken.kind) {
 		case PascalToken.tIdentifier: // atribuição
 			return parseAssignmentCommand();
@@ -91,10 +92,13 @@ public class Parser {
 			return parseMultiCommand();
 
 		default:
-			throw new ParserException(currentToken,
-					"um comando iniciado por: " + getSpelling(PascalToken.tIdentifier) + " ou \n"
-							+ getSpelling(PascalToken.tIf) + " ou \n" + getSpelling(PascalToken.tWhile) + " ou \n"
-							+ getSpelling(PascalToken.tBegin));
+			this.mpe.add(new ParserException(currentToken,
+					"a command started by : ' " + getSpelling(PascalToken.tIdentifier) + " ' , ' "
+							+ getSpelling(PascalToken.tIf) + " ' , ' " + getSpelling(PascalToken.tWhile) + " ' , ' "
+							+ getSpelling(PascalToken.tBegin)));
+			Command ret = new MultiCommand(currentToken.line,currentToken.column);
+			acceptIt();
+			return ret;
 		}
 	}
 
@@ -102,7 +106,7 @@ public class Parser {
 		return currentToken.kind == PascalToken.tVar;
 	}
 
-	private Declaration parseDeclaration() throws ParserException {
+	private Declaration parseDeclaration(){
 		Declaration declaration = new Declaration(currentToken.line, currentToken.column);
 		accept(PascalToken.tVar);// var
 		declaration.addId(accept(PascalToken.tIdentifier).spelling);// <id>
@@ -117,7 +121,7 @@ public class Parser {
 		return declaration;
 	}
 
-	private Expression parseExpression() throws ParserException {
+	private Expression parseExpression(){
 		Expression expression = new Expression(currentToken.line, currentToken.column);
 		expression.setA(parseSimpleExpression(), 0);// <simple-expression>
 		if (FF1OpRel()) {// (
@@ -128,7 +132,7 @@ public class Parser {
 		return expression;
 	}
 
-	private SimpleExpression parseSimpleExpression() throws ParserException {
+	private SimpleExpression parseSimpleExpression(){
 		SimpleExpression expression = new SimpleExpression(currentToken.line, currentToken.column);
 		expression.addA(parseTerm());// <term>
 		while (FF1OpAd()) {// (
@@ -139,7 +143,7 @@ public class Parser {
 		return expression;
 	}
 
-	private Term parseTerm() throws ParserException {
+	private Term parseTerm(){
 		Term term = new Term(currentToken.line, currentToken.column);
 		term.addA(parseFactor());// <factor>
 		while (FF1OpMul()) {// (
@@ -150,7 +154,7 @@ public class Parser {
 		return term;
 	}
 
-	private Factor parseFactor() throws ParserException {
+	private Factor parseFactor(){
 		Lit lit = null;
 		switch (currentToken.kind) {
 		case PascalToken.tIdentifier:
@@ -179,15 +183,19 @@ public class Parser {
 
 			return expression;
 		default:
-			throw new ParserException(currentToken,
-					"um Fator como: " + getSpelling(PascalToken.tIdentifier) + " ou \n"
-							+ getSpelling(PascalToken.tFalse) + " ou \n" + getSpelling(PascalToken.tTrue) + " ou \n"
-							+ getSpelling(PascalToken.tIntegerLit) + " ou \n" + getSpelling(PascalToken.tFloatLit)
-							+ " ou \n" + getSpelling(PascalToken.tLParen) + "..." + getSpelling(PascalToken.tRParen));
+			this.mpe.add(new ParserException(currentToken,
+					"a Factor like : an " + getSpelling(PascalToken.tIdentifier) + " , ' "
+							+ getSpelling(PascalToken.tFalse) + " ' , ' " + getSpelling(PascalToken.tTrue) + " ' , ' "
+							+ getSpelling(PascalToken.tIntegerLit) + " ' , ' " + getSpelling(PascalToken.tFloatLit)
+							+ " ' , ' " + getSpelling(PascalToken.tLParen) + "..." + getSpelling(PascalToken.tRParen)));
+			lit = new BoolLit(currentToken.line, currentToken.column);
+			lit.setValue("false");// <bool-lit>
+			acceptIt();
+			return lit;
 		}
 	}
 
-	private Program parseProgram() throws ParserException {
+	private Program parseProgram(){
 		Program program = new Program(currentToken.line, currentToken.column);
 
 		accept(PascalToken.tProgram);// program
@@ -202,7 +210,7 @@ public class Parser {
 		return program;
 	}
 
-	private Type parseType() throws ParserException {
+	private Type parseType(){
 		Type type;
 		switch (currentToken.kind) {
 		case PascalToken.tArray:// Type
@@ -242,15 +250,18 @@ public class Parser {
 			break;
 
 		default:
-			throw new ParserException(currentToken,
-					" um tipo como: " + getSpelling(PascalToken.tInteger) + " ou \n" + getSpelling(PascalToken.tReal)
-							+ " ou \n" + getSpelling(PascalToken.tBoolean) + " ou \n" + getSpelling(PascalToken.tArray)
-							+ "[... ~ ...] of ...");
+			mpe.add(new ParserException(currentToken,
+					" a type like: " + getSpelling(PascalToken.tInteger) + " ' , ' " + getSpelling(PascalToken.tReal)
+							+ " ' , ' " + getSpelling(PascalToken.tBoolean) + " ' , ' " + getSpelling(PascalToken.tArray)
+							+ "[... ~ ...] of ..."));
+			type = new PrimitiveType(currentToken.line, currentToken.column);
+			((PrimitiveType) type).setType(PrimitiveType.tBoolean);
+			acceptIt();
 		}
 		return type;
 	}
 
-	private Variable parseVariable() throws ParserException {
+	private Variable parseVariable(){
 		Variable variable = new Variable(currentToken.line, currentToken.column);
 		variable.setId(accept(PascalToken.tIdentifier).spelling); // <id>
 		while (currentToken.kind == PascalToken.tLBracket) {// (
@@ -267,7 +278,7 @@ public class Parser {
 		return kind == PascalToken.tPlusSgn || kind == PascalToken.tDash || kind == PascalToken.tOr;
 	}
 
-	private OpAd parseOpAd() throws ParserException {
+	private OpAd parseOpAd(){
 		OpAd ret;
 		switch (currentToken.kind) {
 		case PascalToken.tPlusSgn:
@@ -283,8 +294,11 @@ public class Parser {
 			acceptIt();
 			return ret.setOp(OpAd.tOr);
 		default:
-			throw new ParserException(currentToken, "Um operador como: " + getSpelling(PascalToken.tPlusSgn) + " ou \n"
-					+ getSpelling(PascalToken.tDash) + " ou \n" + getSpelling(PascalToken.tOr));
+			mpe.add(new ParserException(currentToken, "an operator like : " + getSpelling(PascalToken.tPlusSgn) + " ' , ' "
+					+ getSpelling(PascalToken.tDash) + " ' , ' " + getSpelling(PascalToken.tOr)));
+			ret = new OpAd(currentToken.line, currentToken.column);
+			acceptIt();
+			return ret.setOp(OpAd.tOr);
 		}
 	}
 
@@ -293,7 +307,7 @@ public class Parser {
 		return kind == PascalToken.tAsterisk || kind == PascalToken.tFwdSlash || kind == PascalToken.tAnd;
 	}
 
-	private OpMul parseOpMul() throws ParserException {
+	private OpMul parseOpMul(){
 		OpMul ret;
 		switch (currentToken.kind) {
 		case PascalToken.tAsterisk:
@@ -309,8 +323,11 @@ public class Parser {
 			acceptIt();
 			return ret.setOp(OpMul.tAnd);
 		default:
-			throw new ParserException(currentToken, "Um operador como: " + getSpelling(PascalToken.tAsterisk) + " ou \n"
-					+ getSpelling(PascalToken.tFwdSlash) + " ou \n" + getSpelling(PascalToken.tAnd));
+			mpe.add(new ParserException(currentToken, "an operator like: " + getSpelling(PascalToken.tAsterisk) + " ' , ' "
+					+ getSpelling(PascalToken.tFwdSlash) + " ' , ' " + getSpelling(PascalToken.tAnd)));
+			ret = new OpMul(currentToken.line, currentToken.column);
+			acceptIt();
+			return ret.setOp(OpMul.tAnd);
 		}
 	}
 
@@ -320,7 +337,7 @@ public class Parser {
 				|| kind == PascalToken.tGreatThEq || kind == PascalToken.tEquals || kind == PascalToken.tUnLike;
 	}
 
-	private OpRel parseOpRel() throws ParserException {
+	private OpRel parseOpRel(){
 		OpRel ret;
 		switch (currentToken.kind) {
 		case PascalToken.tLessTh:
@@ -348,21 +365,27 @@ public class Parser {
 			acceptIt();
 			return ret.setOp(OpRel.tNotEq);
 		default:
-			throw new ParserException(currentToken,
-					"um operador como: " + getSpelling(PascalToken.tLessTh) + " ou \n"
-							+ getSpelling(PascalToken.tGreatTh) + " ou \n" + getSpelling(PascalToken.tLessThEq)
-							+ " ou \n" + getSpelling(PascalToken.tGreatThEq) + " ou \n"
-							+ getSpelling(PascalToken.tEquals) + " ou \n" + getSpelling(PascalToken.tUnLike));
+			mpe.add(new ParserException(currentToken,
+					"an operator like : " + getSpelling(PascalToken.tLessTh) + " ' , ' "
+							+ getSpelling(PascalToken.tGreatTh) + " ' , ' " + getSpelling(PascalToken.tLessThEq)
+							+ " ' , ' " + getSpelling(PascalToken.tGreatThEq) + " ' , ' "
+							+ getSpelling(PascalToken.tEquals) + " ' , ' " + getSpelling(PascalToken.tUnLike)));
+			ret = new OpRel(currentToken.line, currentToken.column);
+			acceptIt();
+			return ret.setOp(OpRel.tNotEq);
 		}
 	}
 
-	private Token accept(byte expectedKind) throws ParserException {
+	private Token accept(byte expectedKind){
 		if (currentToken.kind == expectedKind) {
 			Token ret = currentToken;
 			currentToken = scanner.scan();
 			return ret;
 		} else {
-			throw new ParserException(currentToken, getSpelling(expectedKind));
+			mpe.add(new ParserException(currentToken, getSpelling(expectedKind)));
+			Token ret = new Token(expectedKind,getSpelling(expectedKind),currentToken.line,currentToken.column);
+			currentToken = scanner.scan();
+			return ret;
 		}
 	}
 

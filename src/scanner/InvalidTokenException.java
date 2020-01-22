@@ -17,6 +17,6 @@ public class InvalidTokenException extends ScannerException{
 
 	@Override
 	public String getMessage() {
-		return super.getMessage()+ "Este token não faz parte desta linguagem\n\t "+spelling;
+		return super.getMessage()+ "This token isn't recognizable in this language\n\t ' "+spelling+" '";
 	}
 }

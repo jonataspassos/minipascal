@@ -177,7 +177,7 @@ public class PatternToken {
 				if(i.type == 'n') {
 					return "0";
 				}else if(i.type == 'a') {
-					return "identificador";
+					return "identifier";
 				}
 			}else if(i.nStart<kind && i.nStart+i.list.length >=kind) {
 				return i.list[kind-i.nStart-1];

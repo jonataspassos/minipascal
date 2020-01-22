@@ -1,8 +1,8 @@
 	;program sc1
 	;declarations
 PUSH 1 	;y : integer
-PUSH 2 	;x : real
-PUSH 2 	;z : real
+PUSH 1 	;x : real
+PUSH 1 	;z : real
 PUSH 1 	;b : boolean
 PUSH 100 	;p : array [10~20] of array [10~20] of boolean
 	;MultiCommand
@@ -10,7 +10,7 @@ PUSH 100 	;p : array [10~20] of array [10~20] of boolean
 	;AssignmentCommand x := 1.0;
 
 LOADL 1.0 
-STORE(2) 1[SB] 	;x
+STORE(1) 1[SB] 	;x
 
 	;AssignmentCommand y := 2;
 
@@ -19,7 +19,7 @@ STORE(1) 0[SB] 	;y
 
 	;AssignmentCommand z := x + y*45*(30 + 45);
 
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 LOAD(1) 0[SB] 	;y
 LOADL 45 
 	;integer*integer->integer:0 := 0*0
@@ -33,10 +33,10 @@ CALL(SB) 10[PB] 	;mult
 	;real+((real)integer)->real:0.0 := 0.0+0
 CALL(SB) toReal 	;convert to real
 CALL(SB) addR 	;add to real
-STORE(2) 3[SB] 	;z
+STORE(1) 2[SB] 	;z
 
 	;ConditionalCommand
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 LOAD(1) 0[SB] 	;y
 	;real=((real)integer)->boolean:T := 0.0 = 0
 CALL(SB) toReal 	;convert to real
@@ -61,61 +61,61 @@ LOAD(1) 0[SB] 	;y
 	;integer*integer->integer:0 := 0*0
 CALL(SB) 10[PB] 	;mult
 	;((real)integer)+real->real: 0.0 := 0+0.0
-LOAD(1) -3[ST] 	;copy integer
+LOAD(1) -2[ST] 	;copy integer
 CALL(SB) toReal 	;convert to real
-POP(4) 1 	;erase integer
+POP(2) 1 	;erase integer
 CALL(SB) addR 	;add to real
 LOADL 3 
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 	;((real)integer)*real->real:0.0 := 0*0.0
-LOAD(1) -3[ST] 	;copy integer
+LOAD(1) -2[ST] 	;copy integer
 CALL(SB) toReal 	;convert to real
-POP(4) 1 	;erase integer
+POP(2) 1 	;erase integer
 CALL(SB) multR 	;mult to real
 LOADL 4.0 
 	;real*real->real:0.0 := 0.0*0.0
 CALL(SB) multR 	;mult to real
 	;((real)integer)+real->real: 0.0 := 0+0.0
-LOAD(1) -3[ST] 	;copy integer
+LOAD(1) -2[ST] 	;copy integer
 CALL(SB) toReal 	;convert to real
-POP(4) 1 	;erase integer
+POP(2) 1 	;erase integer
 CALL(SB) addR 	;add to real
-STORE(2) 1[SB] 	;x
+STORE(1) 1[SB] 	;x
 
-	;AssignmentCommand x := (y - x)/2;
+	;AssignmentCommand z := (y - x)/2;
 
 LOAD(1) 0[SB] 	;y
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 	;((real)integer)-real->real:0.0 := 0-0.0
-LOAD(1) -3[ST] 	;copy integer
+LOAD(1) -2[ST] 	;copy integer
 CALL(SB) toReal 	;convert to real
-POP(4) 1 	;erase integer
+POP(2) 1 	;erase integer
 CALL(SB) subR 	;sub to real
 LOADL 2 
 	;real/((real)integer)->real:0.0 := 0.0/1
 CALL(SB) toReal 	;convert to real
-LOAD(2) -2[ST] 	;copy last
+LOAD(1) -1[ST] 	;copy last
 LOADL 0.0 
 CALL(SB) 17[PB] 	;eq
 JUMPIF(0) lb1 	;valid division
 HALT 	;invalid division
 lb1: CALL(SB) divR 	;div to real
-STORE(2) 1[SB] 	;x
+STORE(1) 2[SB] 	;z
 
-	;AssignmentCommand p[y][y] := (x = y) or (z = x);
+	;AssignmentCommand p[y][1] := (x = y) or (z = x);
 
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 LOAD(1) 0[SB] 	;y
 	;real=((real)integer)->boolean:T := 0.0 = 0
 CALL(SB) toReal 	;convert to real
 CALL(SB) 17[PB] 	;eq
-LOAD(2) 3[SB] 	;z
-LOAD(2) 1[SB] 	;x
+LOAD(1) 2[SB] 	;z
+LOAD(1) 1[SB] 	;x
 	;real=real->boolean:T := 0.0 = 0.0
 CALL(SB) 17[PB] 	;eq
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
-LOADA -104[SB] 
+LOADA -106[SB] 
 	;Index
 LOAD(1) 0[SB] 	;y
 
@@ -136,7 +136,7 @@ LOADL 10 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
 CALL(SB) sum 	;somando endere�o relativo
 	;Index
-LOAD(1) 0[SB] 	;y
+LOADL 1 
 
 	;Index Validation
 LOAD(1) -1[ST] 	;copy index
@@ -155,30 +155,30 @@ LOADL 1 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
 CALL(SB) sum 	;somando endere�o relativo
 
-STOREI(1) 	;p[y][y]
+STOREI(1) 	;p[y][1]
 
 	;end
 JUMP lb6 
 lb0: 	;else
-	;AssignmentCommand b := (x = y) or (y = x) or p[y][y];
+	;AssignmentCommand b := (x = y) or (y = x) or p[1][y];
 
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 LOAD(1) 0[SB] 	;y
 	;real=((real)integer)->boolean:T := 0.0 = 0
 CALL(SB) toReal 	;convert to real
 CALL(SB) 17[PB] 	;eq
 LOAD(1) 0[SB] 	;y
-LOAD(2) 1[SB] 	;x
+LOAD(1) 1[SB] 	;x
 	;((real)integer)=real->boolean:T := 0 = 0.0
-LOAD(1) -3[ST] 	;copy integer
+LOAD(1) -2[ST] 	;copy integer
 CALL(SB) toReal 	;convert to real
-POP(4) 1 	;erase integer
+POP(2) 1 	;erase integer
 CALL(SB) 17[PB] 	;eq
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
-LOADA -104[SB] 
+LOADA -106[SB] 
 	;Index
-LOAD(1) 0[SB] 	;y
+LOADL 1 
 
 	;Index Validation
 LOAD(1) -1[ST] 	;copy index
@@ -216,10 +216,10 @@ LOADL 1 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
 CALL(SB) sum 	;somando endere�o relativo
 
-LOADI(1) 	;p[y][y]
+LOADI(1) 	;p[1][y]
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
-STORE(1) 5[SB] 	;b
+STORE(1) 3[SB] 	;b
 lb6: 	;endIf
 
 	;end

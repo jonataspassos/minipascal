@@ -2,6 +2,7 @@ package compilador;
 
 import ast.AST;
 import checker.Checker;
+import checker.CheckerException;
 import coder.Coder;
 import formatter.Formatter;
 import formatter.PascalFormater;
@@ -46,8 +47,8 @@ public class Compilador {
 
 		} catch (ParserException e) {
 			System.err.println(e.getMessage());
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (CheckerException e) {
+			System.err.println(e.getMessage());
 		}
 	}
 

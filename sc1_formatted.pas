@@ -10,9 +10,9 @@ begin
 	if x = y then
 	begin
 		x := 3*y*5 + 1*2*y + 3*x*4.0;
-		x := (y - x)/2;
-		p[y][y] := (x = y) or (z = x);
+		z := (y - x)/2;
+		p[y][1] := (x = y) or (z = x);
 	end
 	else
-		b := (x = y) or (y = x) or p[y][y];
+		b := (x = y) or (y = x) or p[1][y];
 end.

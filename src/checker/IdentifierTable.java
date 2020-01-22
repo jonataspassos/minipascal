@@ -18,16 +18,45 @@ public class IdentifierTable {
 			return false;
 		}	
 		return true;
-		//TODO estará declarando duas variáveis com o mesmo nome
+		//estará declarando duas variáveis com o mesmo nome
 	}
 	public Declaration retrieve(String id) {
-		for(Object i : this.table.toArray()) {
-			if(((IdentifierTuple)i).getId().equals(id)) {
-				((IdentifierTuple)i).setRetrived();
-				return ((IdentifierTuple)i).getDec(); 
+		for(IdentifierTuple i : this.table) {
+			if(i.getId().equals(id)) {
+				i.setRetrived();
+				return i.getDec(); 
 			}
 		}
 		return null;
+		//estará consultando variavel não declarada
+	}
+	
+	public void check() throws CheckerException {
+		MultiCheckerException mce = new MultiCheckerException();
+		for(IdentifierTuple i : this.table) {
+			if(!i.isRetrived())
+				mce.add(new CheckerException(i.getDec(), "The id ' "+i.id+" ' was declared but was not used") {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public String getMessage() {
+						String ast = (""+this.ast);
+						if(ast.charAt(ast.length()-1)=='\n')
+							ast = ast.substring(0, ast.length()-1);
+						
+						ast = ast.replaceAll("\n", "\n\t");
+						return "WARNING ["+this.getLine()+" : "+this.getColumn()+"] Context Warning:\n"+
+								"\t--------------------------------\n"+
+								"\t"+ast.substring(0, ast.length()<=50?ast.length():50)+"\n"+
+								"\t--------------------------------\n"+
+								"\t"+this.message+"\n\n";
+					}
+				});
+		}
+		mce.check();
 	}
 	
 	

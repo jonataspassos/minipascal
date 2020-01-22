@@ -7,7 +7,7 @@ public class PrimitiveType extends Type {
 	public static final char tBoolean = 'b';
 	public static final char tNone = '\0';
 	public static final int sInt = 1;
-	public static final int sReal = 2;
+	public static final int sReal = 1;
 	public static final int sBoolean = 1;
 	public static final int sNone = 0;
 

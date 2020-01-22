@@ -17,16 +17,16 @@ public class ParserException extends CompilerException{
 	public ParserException(Token t, String e) {
 		super(1, t.line, t.column);
 		this.invalid = t;
-		
-		this.expects = e;
-		
-		
+		this.expects = e;		
+	}
+	public ParserException() {	
+		super(1,0,0);
 	}
 	
 	@Override
 	public String getMessage() {
-		return super.getMessage() + "Erro de Sintaxe\n Este token não era esperado: "+this.invalid.spelling+"\n"
-				+ "Esperava-se: "+expects;
+		return super.getMessage() + "Parser Exception\n\tThis token wasn't expected: ' "+this.invalid.spelling+" '\n"
+				+ "\tWas expected: ' "+expects+" '\n";
 	}
 
 }
