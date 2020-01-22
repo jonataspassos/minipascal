@@ -1,5 +1,6 @@
 package parser;
 
+import ast.AST;
 import compilador.CompilerException;
 import scanner.Token;
 
@@ -13,22 +14,27 @@ public class ParserException extends CompilerException{
 	
 	private Token invalid;
 	private String expects;
+	private AST ast;
 	
-	public ParserException(Token t, String e) {
+	public ParserException(Token t, String e) {//AST ast,
 		super(1, t.line, t.column);
 		this.invalid = t;
 		this.expects = e;		
+		//this.ast = ast;
 	}
 	public ParserException() {	
 		super(1,0,0);
 	}
 	
+	//*
 	@Override
 	public String getMessage() {
 		return super.getMessage() + "Parser Exception\n\tThis token wasn't expected: ' "+this.invalid.spelling+" '\n"
 				+ "\tWas expected: ' "+expects+" '\n";
 	}
-	/*@Override
+	
+	/* /
+	@Override
 	public String getMessage() {
 		String ast = (""+this.ast);
 		if(ast.charAt(ast.length()-1)=='\n')
@@ -42,6 +48,7 @@ public class ParserException extends CompilerException{
 					"\t--------------------------------\n"+
 					"\tThis token wasn't expected: ' "+this.invalid.spelling+" '\\n\"\r\n" 
 					+ "\tWas expected: ' "+expects+" '\n";
-	}*/
+	}
 
+	/**/
 }
