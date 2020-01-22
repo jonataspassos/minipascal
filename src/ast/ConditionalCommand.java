@@ -21,6 +21,10 @@ public class ConditionalCommand extends Command {
 	public Command getCommand(boolean cond) {
 		return command[cond ? 0 : 1];
 	}
+	
+	public boolean hasElseCommand() {
+		return 	this.command[1]!=null;
+	}
 
 	public ConditionalCommand setCommand(Command command, boolean cond) {
 		this.command[cond ? 0 : 1] = command;

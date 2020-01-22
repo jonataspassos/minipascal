@@ -59,6 +59,7 @@ public class Variable extends Factor {
 			Type ret = this.declaration.getType();
 			for (Object i : this.indexer.toArray()) {
 				ret = ((AggregateType)ret).getType();
+				
 			}
 			return ret;
 		}
@@ -68,5 +69,14 @@ public class Variable extends Factor {
 	@Override
 	public Type getType() {
 		return typeIndexed();
+	}
+	
+	//Code
+	public int getAddress() {
+		return declaration.getAddress(this.id);
+	}
+
+	public int size() {
+		return getType().size();
 	}
 }

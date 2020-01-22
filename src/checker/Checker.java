@@ -24,10 +24,6 @@ import ast.Term;
 import ast.Type;
 import ast.Variable;
 import ast.Visitor;
-import formatter.Formatter;
-import formatter.PascalFormater;
-import parser.Parser;
-import printer.Printer;
 
 public class Checker implements Visitor {
 

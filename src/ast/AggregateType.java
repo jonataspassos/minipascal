@@ -48,6 +48,11 @@ public class AggregateType extends Type {
 		}
 		return false;
 	}
+
+	@Override
+	public int size() {
+		return (this.getIndex(1)-this.getIndex(0))* this.getType().size();
+	}
 	
 	
 }

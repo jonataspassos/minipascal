@@ -2,6 +2,7 @@ package compilador;
 
 import ast.AST;
 import checker.Checker;
+import coder.Coder;
 import formatter.Formatter;
 import formatter.PascalFormater;
 import function.JD3String;
@@ -10,7 +11,7 @@ import parser.ParserException;
 import printer.Printer;
 import scanner.Scanner;
 
-public class TesteCompilador {
+public class Compilador {
 	public static void main(String args[]) throws Exception {
 
 		try {
@@ -40,6 +41,8 @@ public class TesteCompilador {
 			p.print(program, "sc1_after.html");
 
 			// Geração de Código
+			Coder coder = new Coder();
+			coder.code(program,"sc1_code.tam");
 
 		} catch (ParserException e) {
 			System.err.println(e.getMessage());

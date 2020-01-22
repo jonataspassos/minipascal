@@ -6,6 +6,10 @@ public class PrimitiveType extends Type {
 	public static final char tReal = 'r';
 	public static final char tBoolean = 'b';
 	public static final char tNone = '\0';
+	public static final int sInt = 1;
+	public static final int sReal = 2;
+	public static final int sBoolean = 1;
+	public static final int sNone = 0;
 
 	private char type;
 
@@ -34,5 +38,20 @@ public class PrimitiveType extends Type {
 		if(t instanceof PrimitiveType)
 			return this.getType() == ((PrimitiveType)t).getType();
 		else return false;
+	}
+
+	@Override
+	public int size() {
+		switch(this.type) {
+		case tInt:
+			return sInt;
+		case tBoolean:
+			return sBoolean;
+		case tReal:
+			return sReal;
+		}
+		return 0;
 	};
+	
+	
 }

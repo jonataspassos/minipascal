@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Declaration extends AST {
 	private ArrayList<String> id = new ArrayList<String>();
 	private Type type;
+	private int address;
 
 	public Declaration(int line, int column) {
 		super(line, column);
@@ -41,4 +42,12 @@ public class Declaration extends AST {
 	public void visit(Visitor v) {
 		v.visitDeclaration(this);
 	};
+	
+	//Code
+	public void setAddress(int address) {
+		this.address = address;
+	}
+	public int getAddress(String id) {
+		return this.id.indexOf(id)*this.type.size()+this.address;
+	}
 }

@@ -11,5 +11,8 @@ public abstract class Type extends AST {
 	
 	//Context
 	public abstract boolean equals(Type t);
+	
+	//Code
+	public abstract int size();
 
 }

@@ -15,6 +15,16 @@ public class FloatLit extends Lit {
 	public float getValue() {
 		return value;
 	}
+	public int getA() {
+		float vReal = this.value;
+		
+		return 0;
+	}
+	public int getB() {
+		if(value>1e+16)
+			return 0;
+		return 0;
+	}
 
 	public FloatLit setValue(float value) {
 		this.value = value;

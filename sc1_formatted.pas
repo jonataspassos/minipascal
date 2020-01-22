@@ -2,7 +2,7 @@ program sc1;
 	var y : integer;
 	var x, z : real;
 	var b : boolean;
-	var p : array [10~20] of array [10~30] of array [10~30] of boolean;
+	var p : array [10~20] of array [10~20] of boolean;
 begin
 	x := 1.0;
 	y := 2;
@@ -14,5 +14,5 @@ begin
 		p[y][y] := (x = y) or (z = x);
 	end
 	else
-		b := (x = y) or (y = x);
+		b := (x = y) or (y = x) or p[y][y];
 end.
