@@ -1,5 +1,7 @@
 package ast;
 
+import checker.CheckerException;
+
 public abstract class Factor extends AST {
 
 	public Factor(int line, int column) {
@@ -10,6 +12,6 @@ public abstract class Factor extends AST {
 	public abstract void visit (Visitor v);
 
 	// Context
-	public abstract Type getType();
+	public abstract Type getType() throws CheckerException;
 	
 }

@@ -2,7 +2,6 @@ package checker;
 
 import java.util.ArrayList;
 
-import ast.AST;
 import ast.Program;
 
 
@@ -30,6 +29,7 @@ public class MultiCheckerException extends CheckerException{
 		for (CheckerException i : this.ces) {
 			ret += i.getMessage();
 		}
+		ret+=""+this.ces.size()+" Errors!";
 		return ret;
 	}
 	

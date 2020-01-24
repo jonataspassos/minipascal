@@ -2,6 +2,8 @@ package ast;
 
 import java.util.ArrayList;
 
+import checker.CheckerException;
+
 public class Term extends AST {
 
 	private ArrayList<Factor> a = new ArrayList<Factor>();
@@ -53,7 +55,7 @@ public class Term extends AST {
 	}
 
 	// Context
-	public Type getType() {
+	public Type getType() throws CheckerException {
 		return this.op.size()!=0?this.op.get(this.op.size()-1).getType():a.get(0).getType();
 	};
 

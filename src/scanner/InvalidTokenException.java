@@ -12,7 +12,6 @@ public class InvalidTokenException extends ScannerException{
 	public InvalidTokenException(Token t) {
 		super(0, t);
 		this.spelling = t.spelling;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

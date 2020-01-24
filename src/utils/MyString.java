@@ -3,14 +3,14 @@ package utils;
 public class MyString {
 
 	/**
-	 * @returns Verdadeiro se o caractere é um digito
+	 * @returns Verdadeiro se o caractere ï¿½ um digito
 	 */
 	public static boolean isDigit(char c) {
 		return ((int) c) >= ((int) '0') && ((int) c) <= ((int) '9');
 	}
 
 	/**
-	 * @returns Verdadeiro se o caractere é uma letra
+	 * @returns Verdadeiro se o caractere ï¿½ uma letra
 	 */
 	public static boolean isLetter(char c) {
 		return (((int) c) >= ((int) 'a') && ((int) c) <= ((int) 'z'))
@@ -18,14 +18,14 @@ public class MyString {
 	}
 
 	/**
-	 * @return Verdadeiro se o caractere é um separador
+	 * @return Verdadeiro se o caractere ï¿½ um separador
 	 * */
 	public static boolean isSeparator(char c) {
 		return c=='\r' || c=='\n' || c == '\t' || c == ' ';
 	}
 	
 	/**
-	 * @return Verdadeiro se o caractere é um símbolo
+	 * @return Verdadeiro se o caractere ï¿½ um sï¿½mbolo
 	 * */
 	public static boolean isSymbol(char c) {
 		int i = (int)c;
@@ -41,7 +41,7 @@ public class MyString {
 		if(isLetter(c))
 			return 'a';//Alfa numerico
 		if(isSymbol(c)) 
-			return 's';//Símbolo
+			return 's';//Sï¿½mbolo
 		if(isSeparator(c))
 			return 'd';
 		else
@@ -49,7 +49,7 @@ public class MyString {
 	}
 
 	/**
-	 * @return Verdadeiro se C1 é igual a C2
+	 * @return Verdadeiro se C1 ï¿½ igual a C2
 	 * */
 	public static boolean equals(String c1, String c2) {
 		if(c1.length()!=c2.length()) {
@@ -65,7 +65,7 @@ public class MyString {
 	
 	/**
 	 * Converte vetor da classe Object do java em um Vetor de String
-	 * Isso é usado quanso se precisa extrair o vetor formado pelos elementos de um Arraylist.
+	 * Isso ï¿½ usado quanso se precisa extrair o vetor formado pelos elementos de um Arraylist.
 	 * */
 	public static String[] convert(Object [] v) {
 		String [] r = new String[v.length];

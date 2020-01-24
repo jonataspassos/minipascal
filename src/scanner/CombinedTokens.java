@@ -79,12 +79,6 @@ public class CombinedTokens {
 		}
 	}
 
-	// Construtor genêrico, não utilizado no projeto
-	CombinedTokens(byte kind, ArrayList<Token> parts) {
-		this.kind = kind;
-		this.parts = parts;
-	}
-
 	/**
 	 * Este método agrupa todos os spellings dos tokens internos e retorna em uma
 	 * unica String

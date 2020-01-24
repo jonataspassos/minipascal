@@ -2,6 +2,8 @@ package ast;
 
 import java.util.ArrayList;
 
+import checker.CheckerException;
+
 public class Variable extends Factor {
 	private String id;
 	private ArrayList<Expression> indexer = new ArrayList<Expression>();
@@ -53,12 +55,15 @@ public class Variable extends Factor {
 		this.declaration = declaration;
 	}
 	
-	public Type typeIndexed() {
+	public Type typeIndexed() throws CheckerException {
 		if(this.declaration!=null) {
 			Type ret = this.declaration.getType();
-			for (Object i : this.indexer.toArray()) {
-				//this can generate a exception cast
+			for (int i = 0;i<this.indexer.size();i++) {
+				try {
 				ret = ((AggregateType)ret).getType();
+				}catch (ClassCastException e) {
+					throw new CheckerException(ret, "The variable ' "+ret+" ' is not a aggregate Type and can not be indexed");
+				}
 				
 			}
 			return ret;
@@ -67,7 +72,7 @@ public class Variable extends Factor {
 	}
 
 	@Override
-	public Type getType() {
+	public Type getType() throws CheckerException {
 		return typeIndexed();
 	}
 	
@@ -76,7 +81,7 @@ public class Variable extends Factor {
 		return declaration.getAddress(this.id);
 	}
 
-	public int size() {
+	public int size() throws CheckerException {
 		return getType().size();
 	}
 }

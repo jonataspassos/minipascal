@@ -136,18 +136,6 @@ public class PatternToken {
 	}
 
 	/**
-	 * @param indice do tipo de token
-	 * @return O tipo de token solicitado
-	 */
-	public TokenType getType(int i) {
-		if (i < list.length && i >= 0) {
-			return list[i];
-		} else {
-			return null;// TODO tratamento de erro
-		}
-	}
-
-	/**
 	 * @param atributo do TokenType
 	 * @return O tipo de token solicitado
 	 */
@@ -156,7 +144,7 @@ public class PatternToken {
 			if (i.type == type)
 				return i;
 		}
-		return null;// TODO tratamento de erro
+		return null;//tipo não existe
 
 	}
 
@@ -164,13 +152,12 @@ public class PatternToken {
 		return this.listCombined;
 	}
 	
-//	public static void main(String []args) {
-//		PatternToken patternToken = new PatternToken(new FileBuffer("H:\\faculdade\\com backup\\00Material da Faculdade\\7semestre\\Compiladores\\grammar-tokens - Copy.tkn"));
-//		patternToken.listCombined[0].getToken();
-//		patternToken.listCombined[1].getToken();
-//		patternToken.listCombined[2].getToken();
-//	}
-	
+	/**
+	 * Serve para encontrar uma especificação ou exemplo do tipo de token desejado(caso seja extensível) 
+	 * através do código do mesmo
+	 * @param kind - Código do token desejado
+	 * @return String do token
+	 * */
 	public String getSpelling(int kind) {
 		for(TokenType i : this.list) {
 			if(i.nStart == kind && i.any) {

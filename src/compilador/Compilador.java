@@ -14,41 +14,52 @@ import scanner.Scanner;
 
 public class Compilador {
 	public static void main(String args[]) throws Exception {
-
+		String path;
+		String src;
+		Parser parser;
+		AST program = null;
+		Printer p = null;
+		Formatter f;
+		Checker ch;
+		Coder coder;
 		try {
+			
 			// Verificação sintática
-			String path = "files\\grammar-tokens.tkn";
-			String src = "files\\sc1.pas";
+			path = "src\\files\\grammar-tokens.tkn";
+			src = "src\\files\\sc1.pas";
 
-			Parser parser = new Parser(path, src);
-			AST program = null;
+			parser = new Parser(path, src);
+			program = null;
 
 			program = parser.parse();
 
 			// Formatando Texto
-			Formatter f = new PascalFormater();
+			f = new PascalFormater();
 			String formated = f.format(program);
 			JD3String.fileOut("sc1_formatted.pas", formated);
 
 			// Desenho da árvore
-			Printer p = new Printer();
+			p = new Printer();
 			p.print(program, "sc1_before.html");
 
 			// Verificação de Contexto
-			Checker ch = new Checker();
+			ch = new Checker();
 			ch.check(program);
 
 			// Desenho da árvore
 			p.print(program, "sc1_after.html");
 
 			// Geração de Código
-			Coder coder = new Coder();
+			coder = new Coder();
 			coder.code(program,"sc1_code.tam");
 
 		} catch (ParserException e) {
 			System.err.println(e.getMessage());
 		} catch (CheckerException e) {
 			System.err.println(e.getMessage());
+			p.print(program, "sc1_after.html");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.err.println("ERROR : Send a file path to compile!");
 		}
 	}
 

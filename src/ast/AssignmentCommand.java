@@ -1,8 +1,11 @@
 package ast;
 
+import checker.OpType;
+
 public class AssignmentCommand extends Command {
 	private Variable variable;
 	private Expression expression;
+	private OpType assType;
 
 	public AssignmentCommand(int line, int column) {
 		super(line, column);
@@ -29,5 +32,14 @@ public class AssignmentCommand extends Command {
 	// Padrão Visitor
 	public void visit(Visitor v) {
 		v.visitAssignmentCommand(this);
+	}
+
+	// Checker
+	public OpType getAssType() {
+		return assType;
+	}
+
+	public void setAssType(OpType assType) {
+		this.assType = assType;
 	};
 }

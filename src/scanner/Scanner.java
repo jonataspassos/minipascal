@@ -159,7 +159,7 @@ public class Scanner {
 
 	/**
 	 * Este método é privado pois a interface de acesso ao Scanner é através do
-	 * método getToken(). Este método depende das verificações do método
+	 * método scan(). Este método depende das verificações do método
 	 * retroaludido (Tranquilo?!) e só deverá ser chamado pelo mesmo.
 	 * 
 	 * Este método recebe como parâmetro um TokenType para que ele possa verificar o

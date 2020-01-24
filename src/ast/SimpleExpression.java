@@ -2,6 +2,8 @@ package ast;
 
 import java.util.ArrayList;
 
+import checker.CheckerException;
+
 public class SimpleExpression extends AST {
 
 	private ArrayList<Term> a = new ArrayList<Term>();
@@ -53,7 +55,7 @@ public class SimpleExpression extends AST {
 	}
 
 	// Context
-	public Type getType() {
+	public Type getType() throws CheckerException {
 		return this.op.size()!=0?this.op.get(0).getType():a.get(0).getType();
 	};
 }

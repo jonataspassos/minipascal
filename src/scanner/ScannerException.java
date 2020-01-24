@@ -2,7 +2,6 @@ package scanner;
 
 import compilador.CompilerException;
 
-@SuppressWarnings(value = { "" })
 public class ScannerException extends CompilerException {
 
 	/**

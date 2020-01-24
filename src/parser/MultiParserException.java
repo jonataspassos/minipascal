@@ -20,6 +20,7 @@ public class MultiParserException extends ParserException{
 		for (ParserException i : this.pes) {
 			ret += i.getMessage();
 		}
+		ret+=""+this.pes.size()+" Errors!";
 		return ret;
 	}
 	

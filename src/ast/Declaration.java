@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Declaration extends AST {
 	private ArrayList<String> id = new ArrayList<String>();
+	
 	private Type type;
 	private int address;
 

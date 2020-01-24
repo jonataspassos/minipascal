@@ -6,15 +6,15 @@ import utils.MyString;
  * Classe responsável por abarcar as informações de um token capturado do código
  * fonte
  * 
- * @see kind - Código do token
- * @see spelling - String do token
- * @see line - Linha do token no arquivo
- * @see column - Coluna do token no arquivo
+ * <p><strong>kind</strong> - Código do token</br>
+ * <strong>spelling</strong> - String do token</br>
+ * <strong>line</strong> - Linha do token no arquivo</br>
+ * <strong>column</strong> - Coluna do token no arquivo</p>
  * 
  *      Estaticamente, a classe token define:
- * @see invaldToken - Código para tokens inválidos
- * @see endOfFileCode - Código para o token do fim do arquivo
- * @see endOfFile - String para o token do fim do arquivo
+ * <p><strong>invaldToken</strong> - Código para tokens inválidos</br>
+ * <strong>endOfFileCode</strong> - Código para o token do fim do arquivo</br>
+ * <strong>endOfFile</strong> - String para o token do fim do arquivo</p>
  * 
  *      <p>
  *      São os atributos que poderão ser acessados para comparar se é inválido
@@ -24,16 +24,42 @@ import utils.MyString;
  */
 public class Token {
 
+	//Atributos de Classe
+	/**
+	 * String para o token do fim do arquivo
+	 * */
 	public static final String endOfFile = "EOF";
+	/**
+	 * Código para o token do fim do arquivo
+	 * */
 	public static final byte endOfFileCode = 100;
-//	public static final String invalid = "ERRO";
+	/**
+	 * Código para tokens inválidos
+	 * */
 	public static final byte invalidCode = -1;
 
+	//Atributos de Objeto
+	/**
+	 *  Guarda o código do token
+	 * */
 	public final byte kind;
+	/**
+	 * Guarda a cadeia de caracteres do token
+	 * */
 	public final String spelling;
+	/**
+	 * Guarda a linha onde o token foi encontrado
+	 * */
 	public final int line;
+	/**
+	 * Guarda a coluna onde o token foi encontrado
+	 * */
 	public final int column;
 
+	/**
+	 * Constroi o Token com todos os valores necessários
+	 * Os atributos são constantes e não poedrão ser sobrescritos após a instanciação
+	 * */
 	public Token(byte kind, String spelling, int line, int column) {
 		super();
 		this.kind = kind;
@@ -47,10 +73,16 @@ public class Token {
 		return "" + kind + "\t " + spelling + "\t [" + (line + 1) + " : " + (column + 1) + "]";
 	}
 	
+	/**
+	 * @return o primeiro caractere do token
+	 * */
 	public char first() {
 		return spelling.charAt(0);
 	}
 	
+	/**
+	 * @returns o tipo do primeiro caractere do token
+	 * */
 	public char type() {
 		return MyString.type(first()); 
 	}
@@ -76,16 +108,6 @@ public class Token {
 	public static Token invalid(String spelling, int line, int column){
 		//throw new InvalidTokenException(new Token(invalidCode,spelling,line,column));
 		return new Token(invalidCode, spelling, line, column);
-	}
-	
-	public static Token[] convert(Object[] v) {
-		Token[] r = new Token[v.length];
-		for (int i = 0; i < v.length; i++) {
-			if (v[i] instanceof Token) {
-				r[i] = (Token) v[i];
-			}
-		}
-		return r;
 	}
 
 }

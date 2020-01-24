@@ -36,4 +36,11 @@ public class CheckerException extends CompilerException{
 					;
 	}
 
+	public CheckerException setAst(AST ast) {
+		this.ast = ast;
+		this.setLine(ast.getLine());
+		this.setColumn(ast.getColumn());
+		return this;
+	}
+
 }

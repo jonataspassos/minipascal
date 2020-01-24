@@ -1,5 +1,7 @@
 package ast;
 
+import checker.CheckerException;
+
 public class Expression extends Factor {
 	private SimpleExpression[] a = new SimpleExpression[2];
 	private OpRel op;
@@ -37,7 +39,7 @@ public class Expression extends Factor {
 	
 	//Context
 	@Override
-	public Type getType() {
+	public Type getType() throws CheckerException {
 		return this.op!=null?this.op.getType():a[0].getType();
 	};
 }
