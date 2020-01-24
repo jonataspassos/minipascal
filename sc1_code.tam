@@ -7,10 +7,9 @@ PUSH 1 	;b : boolean
 PUSH 100 	;p : array [10~20] of array [10~20] of boolean
 	;MultiCommand
 	;begin
-	;AssignmentCommand x := 10;
+	;AssignmentCommand x := 1.0;
 
-LOADL 10 
-CALL(SB) toReal 	;convert to real
+LOADL 1.0 
 STORE(1) 1[SB] 	;x
 
 	;AssignmentCommand y := 20;
@@ -18,17 +17,17 @@ STORE(1) 1[SB] 	;x
 LOADL 20 
 STORE(1) 0[SB] 	;y
 
-	;AssignmentCommand z := x + y*45*(2 + 45);
+	;AssignmentCommand z := x + 45*(2 + 45)*y;
 
 LOAD(1) 1[SB] 	;x
-LOAD(1) 0[SB] 	;y
 LOADL 45 
-	;integer*integer->integer:0 := 0*0
-CALL(SB) 10[PB] 	;mult
 LOADL 2 
 LOADL 45 
 	;integer+integer->integer: 0 := 0+0
 CALL(SB) 8[PB] 	;add
+	;integer*integer->integer:0 := 0*0
+CALL(SB) 10[PB] 	;mult
+LOAD(1) 0[SB] 	;y
 	;integer*integer->integer:0 := 0*0
 CALL(SB) 10[PB] 	;mult
 	;real+((real)integer)->real:0.0 := 0.0+0
