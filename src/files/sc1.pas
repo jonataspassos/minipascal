@@ -4,7 +4,7 @@ program sc1;
 	var b : boolean;
 	var p : array [10~20] of array [10~20] of boolean;
 begin
-	x := 1.0;
+	x := 10;
 	y := 20;
 	z := x + 45*(2 + 45)*y;
 	if x = y then

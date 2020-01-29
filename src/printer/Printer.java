@@ -6,6 +6,8 @@ import ast.*;
 import checker.CheckerException;
 import function.JD3String;
 import visualization.Visualization;
+import select.F;
+import select.MultSelect;
 import select.Select;
 
 /**
@@ -94,7 +96,30 @@ public class Printer implements Visitor {
 		this.windowH = height;
 
 		// Determina o comportamento de estilo para cada uma das classes e tags
-
+		String[][] colors = {
+				{"array","aqua"},
+				{"integer","dodgerblue"},
+				{"real","darkgreen"},
+				{"boolean","blueviolet"},
+				{"null","gray"},
+				{"variable","coral"},
+				{"expression","antiquewhite"},
+				{"id","lightgray"},
+				{"declaration","darkseagreen"},
+				{"command","goldenrod"},
+				{"program","rebeccapurple"}		
+		};
+		
+		this.vis.tStyle().selectAll("color").data(colors).enter().append(new F() {
+			public String f(Object d, int i) {
+				return "."+((String[])d)[0]+">rect";
+			}
+		}).attr("fill", new F() {
+			public String f(Object d, int i) {
+				return ((String[])d)[1];
+			}
+		});
+		
 		// Todos os textos
 		this.vis.tStyle().append("text").attr("text-anchor", "middle");
 
@@ -102,27 +127,49 @@ public class Printer implements Visitor {
 		this.vis.tStyle().append("line").attr("stroke", "black").attr("stroke-width", "1px");
 
 		// Classes de tipos de identificadores
-		this.vis.tStyle().append(".array>rect").attr("fill", "aqua");
-		this.vis.tStyle().append(".integer>rect").attr("fill", "dodgerblue");
+		//this.vis.tStyle().append(".array>rect").attr("fill", "aqua");
+		//this.vis.tStyle().append(".integer>rect").attr("fill", "dodgerblue");
 		this.vis.tStyle().append(".integer>text").attr("fill", "white").attr("stroke", "black").attr("stroke-width",
 				"0.2px");
-		this.vis.tStyle().append(".real>rect").attr("fill", "darkgreen");
+		//this.vis.tStyle().append(".real>rect").attr("fill", "darkgreen");
 		this.vis.tStyle().append(".real>text").attr("fill", "white").attr("stroke", "black").attr("stroke-width",
 				"0.2px");
-		this.vis.tStyle().append(".boolean>rect").attr("fill", "blueviolet");
+		//this.vis.tStyle().append(".boolean>rect").attr("fill", "blueviolet");
 		this.vis.tStyle().append(".boolean>text").attr("fill", "white").attr("stroke", "black").attr("stroke-width",
 				"0.2px");
-		this.vis.tStyle().append(".null>rect").attr("fill", "gray");
-		this.vis.tStyle().append(".variable>rect").attr("fill", "coral");
+		//this.vis.tStyle().append(".null>rect").attr("fill", "gray");
+		//this.vis.tStyle().append(".variable>rect").attr("fill", "coral");
 
 		// Classes de outras estruturas
 		this.vis.tStyle().append(".expression").attr("stroke", "black").attr("stroke-width", "0.2px");
-		this.vis.tStyle().append(".expression>rect").attr("fill", "antiquewhite");
-		this.vis.tStyle().append(".op>rect").attr("opacity", "0.8");
-		this.vis.tStyle().append(".id>rect").attr("fill", "lightgray");
-		this.vis.tStyle().append(".declaration>rect").attr("fill", "darkseagreen");
-		this.vis.tStyle().append(".command>rect").attr("fill", "goldenrod");
-		this.vis.tStyle().append(".program>rect").attr("fill", "rebeccapurple");
+		//this.vis.tStyle().append(".expression>rect").attr("fill", "antiquewhite");
+		//this.vis.tStyle().append(".op>rect").attr("opacity", "0.8");
+		//this.vis.tStyle().append(".id>rect").attr("fill", "lightgray");
+		//this.vis.tStyle().append(".declaration>rect").attr("fill", "darkseagreen");
+		//this.vis.tStyle().append(".command>rect").attr("fill", "goldenrod");
+		//this.vis.tStyle().append(".program>rect").attr("fill", "rebeccapurple");
+		this.vis.tStyle().append(".program>text").attr("fill", "white").attr("stroke", "black").attr("stroke-width",
+				"0.2px");
+		
+		
+		//Desenha legendas na tag estática da visualização	
+		Select legends = this.vis.tStatic().append("g").attr("transform","translate(0,"+height+")");
+		legends.append("rect").attr("fill","white").attr("opacity",0.65).attr("width",110).attr("height","300").attr("y",-300);
+		
+		MultSelect legend = legends.selectAll(".legend").data(colors).enter().append("g");
+		F fc = new F() {
+			@Override
+			public String f(Object d, int i) {
+				return ((String[])d)[0];
+			}
+		};
+		legend.attr("class",fc).attr("transform",new F() {
+			public String f(Object d, int i) {
+				return "translate(30,"+(-25*i-20)+")";
+			}
+		}).append("rect").attr("width",20).attr("height",20).attr("x",-23).attr("y",-15);
+		legend.append("text").attr("style","fill:black;text-anchor:start;").innerText(fc);
+		
 
 		// Inicializa a variavel temporária para configurar o inicio da geração da
 		// árvore
@@ -1379,3 +1426,5 @@ public class Printer implements Visitor {
 	}
 
 }
+
+

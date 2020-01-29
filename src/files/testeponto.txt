@@ -1,0 +1,27 @@
+1.0	123.321.123321	123321.1.2. #lalalalalala# .123 .312
+1..1	#dslkasdlfjad
+.11..1	# asdkaçsdkfjaçdk
+
+><	 #a#	 ##	<=	 ##	 ##	>=	 ##	 ##	=	## 	<>	 	 	
+!()	 	 	@	 	 	#	 	 	
+[]	 	 	array	 	..	 	 	of	 	 	integer	real	 	boolean	
+
+...	:=	 	 	
+ true	 	
+	false	 	
+		begin	 	
+end	 	if	 	 	then	 	
+else	 	var	 	
+:&	 	 	;	 	 	
+0	 	 	
+-	 	 	9	 	 	
+1998	 	
+123231	 	(	 	 	
+)	 	 	.	 	 	
+while	 	do	 	 	
+a_z	 	A_Z	 	
+jonatas	passos	 	
+,	 	 	+	 	 	
+-	 	 	or	 	 	
+*	 	 	/	 	 	
+and	 	

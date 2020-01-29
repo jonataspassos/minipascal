@@ -1,6 +1,6 @@
 package parser;
 
-import ast.AST;
+//import ast.AST;
 import compilador.CompilerException;
 import scanner.Token;
 
@@ -14,7 +14,7 @@ public class ParserException extends CompilerException{
 	
 	private Token invalid;
 	private String expects;
-	private AST ast;
+	//private AST ast;
 	
 	public ParserException(Token t, String e) {//AST ast,
 		super(1, t.line, t.column);

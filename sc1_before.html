@@ -5,42 +5,35 @@
 .::MiniPascal Printer::.
 </title>
 <style>
-text {
-	text-anchor:middle;
-}line {
-	stroke:black;
-	stroke-width:1px;
+body {
+	background-color:#E8E8E8;
+}.container {
+	position:absolute;
+	left:50%;
+	magin-right:-50%;
+	transform:translate(-50%,0);
+}.panel-control {
+	position:absolute;
+	top:490;
+	left:50%;
+	magin-right:-50%;
+	transform:translate(-50%,0);
+}svg {
+	background-color:white;
 }.array>rect {
 	fill:aqua;
 }.integer>rect {
 	fill:dodgerblue;
-}.integer>text {
-	fill:white;
-	stroke:black;
-	stroke-width:0.2px;
 }.real>rect {
 	fill:darkgreen;
-}.real>text {
-	fill:white;
-	stroke:black;
-	stroke-width:0.2px;
 }.boolean>rect {
 	fill:blueviolet;
-}.boolean>text {
-	fill:white;
-	stroke:black;
-	stroke-width:0.2px;
 }.null>rect {
 	fill:gray;
 }.variable>rect {
 	fill:coral;
-}.expression {
-	stroke:black;
-	stroke-width:0.2px;
 }.expression>rect {
 	fill:antiquewhite;
-}.op>rect {
-	opacity:0.8;
 }.id>rect {
 	fill:lightgray;
 }.declaration>rect {
@@ -49,6 +42,30 @@ text {
 	fill:goldenrod;
 }.program>rect {
 	fill:rebeccapurple;
+}text {
+	text-anchor:middle;
+}line {
+	stroke:black;
+	stroke-width:1px;
+}.integer>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.real>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.boolean>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
+}.expression {
+	stroke:black;
+	stroke-width:0.2px;
+}.program>text {
+	fill:white;
+	stroke:black;
+	stroke-width:0.2px;
 }
 </style>
 
@@ -3021,7 +3038,7 @@ x
 
 
 </rect>
-<g class="real" >
+<g class="integer" >
 <rect y="-11" width="3" height="22" >
 
 
@@ -3029,18 +3046,18 @@ x
 
 
 </g>
-<g transform="translate(14,-8.0)scale(0.3030303,0.3030303)" >
+<g transform="translate(14,-8.0)scale(0.8888889,0.8888889)" >
 <g class="block expression" >
-<g class="block simple-expression real" >
-<g class="block term real" >
-<g class="real" >
-<rect x="-33" width="66" height="18" >
+<g class="block simple-expression integer" >
+<g class="block term integer" >
+<g class="integer" >
+<rect x="-11" width="22" height="18" >
 
 
 </rect>
 <text y="9" dy=".3em" >
 
-1.0
+10
 </text>
 
 
@@ -3136,6 +3153,146 @@ sc1
 </g>
 <g id="static" >
 <g class="in" >
+<g transform="translate(0,480)" >
+<rect fill="white" opacity="0.65" width="110" height="300" y="-300" >
+
+
+</rect>
+<g class="array" transform="translate(30,-20)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+array
+</text>
+
+
+</g>
+<g class="integer" transform="translate(30,-45)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+integer
+</text>
+
+
+</g>
+<g class="real" transform="translate(30,-70)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+real
+</text>
+
+
+</g>
+<g class="boolean" transform="translate(30,-95)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+boolean
+</text>
+
+
+</g>
+<g class="null" transform="translate(30,-120)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+null
+</text>
+
+
+</g>
+<g class="variable" transform="translate(30,-145)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+variable
+</text>
+
+
+</g>
+<g class="expression" transform="translate(30,-170)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+expression
+</text>
+
+
+</g>
+<g class="id" transform="translate(30,-195)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+id
+</text>
+
+
+</g>
+<g class="declaration" transform="translate(30,-220)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+declaration
+</text>
+
+
+</g>
+<g class="command" transform="translate(30,-245)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+command
+</text>
+
+
+</g>
+<g class="program" transform="translate(30,-270)" >
+<rect width="20" height="20" x="-23" y="-15" >
+
+
+</rect>
+<text style="fill:black;text-anchor:start;" >
+
+program
+</text>
+
+
+</g>
+
+
+</g>
 
 
 </g>

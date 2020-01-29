@@ -4,12 +4,13 @@ PUSH 1 	;y : integer
 PUSH 1 	;x : real
 PUSH 1 	;z : real
 PUSH 1 	;b : boolean
-PUSH 100 	;p : array [10~20] of array [10~20] of boolean
+PUSH 121 	;p : array [10~20] of array [10~20] of boolean
 	;MultiCommand
 	;begin
-	;AssignmentCommand x := 1.0;
+	;AssignmentCommand x := 10;
 
-LOADL 1.0 
+LOADL 10 
+CALL(SB) toReal 	;convert to real
 STORE(1) 1[SB] 	;x
 
 	;AssignmentCommand y := 20;
@@ -98,12 +99,7 @@ CALL(SB) subR 	;sub to real
 LOADL 2 
 	;real/((real)integer)->real:0.0 := 0.0/1
 CALL(SB) toReal 	;convert to real
-LOAD(1) -1[ST] 	;copy last
-LOADL 0.0 
-CALL(SB) 17[PB] 	;eq
-JUMPIF(0) lb1 	;valid division
-HALT 	;invalid division
-lb1: CALL(SB) divR 	;div to real
+CALL(SB) divR 	;div to real
 STORE(1) 2[SB] 	;z
 
 	;AssignmentCommand p[y][y] := (x = y) or (z = x);
@@ -119,7 +115,7 @@ LOAD(1) 1[SB] 	;x
 CALL(SB) 17[PB] 	;eq
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
-LOADA -106[SB] 
+LOADA -116[SB] 
 	;Index
 LOAD(1) 0[SB] 	;y
 
@@ -127,16 +123,16 @@ LOAD(1) 0[SB] 	;y
 LOAD(1) -1[ST] 	;copy index
 LOADL 10 	;First index
 CALL(SB) geq 
-JUMPIF(0) lb3 	; if not valid
+JUMPIF(0) lb2 	; if not valid
 LOAD(1) -1[ST] 	;copy index
 LOADL 20 	;Last index
 CALL(SB) leq 
-JUMPIF(1) lb2 	; if valid
-lb3: 
-HALT 
+JUMPIF(1) lb1 	; if valid
 lb2: 
+HALT 
+lb1: 
 	;Index Calculate
-LOADL 10 	;tamanho de cada posi��o
+LOADL 11 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
 CALL(SB) sum 	;somando endere�o relativo
 	;Index
@@ -146,14 +142,14 @@ LOAD(1) 0[SB] 	;y
 LOAD(1) -1[ST] 	;copy index
 LOADL 10 	;First index
 CALL(SB) geq 
-JUMPIF(0) lb5 	; if not valid
+JUMPIF(0) lb4 	; if not valid
 LOAD(1) -1[ST] 	;copy index
 LOADL 20 	;Last index
 CALL(SB) leq 
-JUMPIF(1) lb4 	; if valid
-lb5: 
-HALT 
+JUMPIF(1) lb3 	; if valid
 lb4: 
+HALT 
+lb3: 
 	;Index Calculate
 LOADL 1 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
@@ -162,7 +158,7 @@ CALL(SB) sum 	;somando endere�o relativo
 STOREI(1) 	;p[y][y]
 
 	;end
-JUMP lb6 
+JUMP lb5 
 lb0: 	;else
 	;AssignmentCommand b := (x = y) or (y = x) or p[1][y];
 
@@ -181,7 +177,7 @@ POP(2) 2 	;update operands
 CALL(SB) 17[PB] 	;eq
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
-LOADA -106[SB] 
+LOADA -116[SB] 
 	;Index
 LOADL 1 
 
@@ -189,16 +185,16 @@ LOADL 1
 LOAD(1) -1[ST] 	;copy index
 LOADL 10 	;First index
 CALL(SB) geq 
-JUMPIF(0) lb8 	; if not valid
+JUMPIF(0) lb7 	; if not valid
 LOAD(1) -1[ST] 	;copy index
 LOADL 20 	;Last index
 CALL(SB) leq 
-JUMPIF(1) lb7 	; if valid
-lb8: 
-HALT 
+JUMPIF(1) lb6 	; if valid
 lb7: 
+HALT 
+lb6: 
 	;Index Calculate
-LOADL 10 	;tamanho de cada posi��o
+LOADL 11 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
 CALL(SB) sum 	;somando endere�o relativo
 	;Index
@@ -208,14 +204,14 @@ LOAD(1) 0[SB] 	;y
 LOAD(1) -1[ST] 	;copy index
 LOADL 10 	;First index
 CALL(SB) geq 
-JUMPIF(0) lb10 	; if not valid
+JUMPIF(0) lb9 	; if not valid
 LOAD(1) -1[ST] 	;copy index
 LOADL 20 	;Last index
 CALL(SB) leq 
-JUMPIF(1) lb9 	; if valid
-lb10: 
-HALT 
+JUMPIF(1) lb8 	; if valid
 lb9: 
+HALT 
+lb8: 
 	;Index Calculate
 LOADL 1 	;tamanho de cada posi��o
 CALL(SB) mul 	;com o indice calculado
@@ -225,7 +221,7 @@ LOADI(1) 	;p[1][y]
 	;boolean or boolean->boolean:T := T or T
 CALL(SB) 4[PB] 	;or
 STORE(1) 3[SB] 	;b
-lb6: 	;endIf
+lb5: 	;endIf
 
 	;end
 	;endProgram

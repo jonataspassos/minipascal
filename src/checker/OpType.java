@@ -340,7 +340,7 @@ public abstract class OpType {
 
 				@Override
 				public String description() {
-					return "divide the first integer by second integer resulting in a integer (truncates the rest) (Runtime Error if second equals 0)";
+					return "divides the first integer by second integer resulting in a integer (truncates the rest) (Runtime Error if second equals 0)";
 				}
 
 				@Override
@@ -413,7 +413,7 @@ public abstract class OpType {
 
 				@Override
 				public String description() {
-					return "divide the first real by second real resulting in a real(ressults in NaN if second equals 0)";
+					return "divides the first real by second real resulting in a real(ressults in NaN if second equals 0)";
 				}
 
 				@Override
@@ -421,14 +421,17 @@ public abstract class OpType {
 					if (OpType.intructions == null) {
 						return "ERRO\n";
 					}
-					String labelOk = OpType.intructions.createLabel();
-					String validation = OpType.intructions.getLoad((byte) PrimitiveType.sReal, -PrimitiveType.sReal,
+					
+					String validation = "";
+					/* 
+					 * String labelOk = OpType.intructions.createLabel();
+					 * validation = OpType.intructions.getLoad((byte) PrimitiveType.sReal, -PrimitiveType.sReal,
 							"ST", "copy last") + OpType.intructions.getLoadL(0.0, "")
 							+ OpType.intructions.getCall(staticLink, 0, "eq", "eq")
 							+ OpType.intructions.getJumpIf((byte) 0, 0, labelOk, "valid division")
 							+ OpType.intructions.getHalt("invalid division")
 							+ OpType.intructions.applyLabel(labelOk, null);
-					;
+					;*/
 
 					return validation + OpType.intructions.getCall(staticLink, 0, "divR", "div to real");
 				}

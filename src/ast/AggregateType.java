@@ -51,7 +51,7 @@ public class AggregateType extends Type {
 
 	@Override
 	public int size() {
-		return (this.getIndex(1)-this.getIndex(0))* this.getType().size();
+		return (this.getIndex(1)-this.getIndex(0)+1)* this.getType().size();
 	}
 	
 	
